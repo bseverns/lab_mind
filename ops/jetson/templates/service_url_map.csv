@@ -1,0 +1,7 @@
+service,name,url,private_only,notes
+Portainer,portainer,https://jetson-a:9443,yes,
+Open WebUI,openwebui,http://jetson-a:3000,yes,
+Node-RED,nodered,http://jetson-a:1880,yes,
+Syncthing,syncthing,http://jetson-a:8384,yes,
+CNCjs,cncjs,http://jetson-a:8000,yes,only if enabled
+Digital Factory,digital_factory,https://digitalfactory.ultimaker.com/,cloud,

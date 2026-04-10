@@ -1,0 +1,18 @@
+# Fill only the values you actually know.
+# Leave unknown values blank or obviously marked.
+
+JETSON_HOSTNAME=jetson-a
+JETSON_TAILNET_NAME=
+JETSON_LAN_IP=
+HEADSCALE_SERVER_URL=https://hs.creatempls.org
+HEADSCALE_BASE_DOMAIN=
+HEADSCALE_ENROLLMENT_METHOD=
+HEADSCALE_PREAUTH_KEY=
+HEADSCALE_NODE_TAGS=
+DIGITAL_FACTORY_WORKSPACE_NAME=
+DIGITAL_FACTORY_BOOKMARK_URL=https://digitalfactory.ultimaker.com/
+OPENWEBUI_URL=http://jetson-a:3000
+PORTAINER_URL=https://jetson-a:9443
+NODERED_URL=http://jetson-a:1880
+SYNCTHING_URL=http://jetson-a:8384
+CNCJS_URL=http://jetson-a:8000

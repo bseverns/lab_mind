@@ -1,0 +1,11 @@
+site_name: Lab Brain
+site_description: Standalone Jetson lab-brain docs
+theme:
+  name: material
+nav:
+  - Start Here: docs/00_START_HERE.md
+  - Architecture: docs/02_ARCHITECTURE.md
+  - Blank Card Rebuild: docs/06_BLANK_CARD_REBUILD.md
+  - Remote Access: docs/11_HEADSCALE_JETSON_SIDE.md
+  - Digital Factory: docs/09_DIGITAL_FACTORY_SETUP.md
+  - Operations: docs/18_BACKUP_AND_RESTORE.md

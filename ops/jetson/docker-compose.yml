@@ -1,0 +1,70 @@
+services:
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: lab_brain_portainer
+    restart: unless-stopped
+    ports:
+      - "${PORTAINER_PORT:-9443}:9443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ${PORTAINER_DATA:-/srv/jetson/portainer}:/data
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: lab_brain_ollama
+    restart: unless-stopped
+    ports:
+      - "11434:11434"
+    volumes:
+      - ${OLLAMA_DATA:-/srv/jetson/ollama}:/root/.ollama
+
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: lab_brain_openwebui
+    restart: unless-stopped
+    depends_on:
+      - ollama
+    ports:
+      - "${OPENWEBUI_PORT:-3000}:8080"
+    environment:
+      OLLAMA_BASE_URL: http://ollama:11434
+    volumes:
+      - ${OPENWEBUI_DATA:-/srv/jetson/openwebui}:/app/backend/data
+
+  nodered:
+    image: nodered/node-red:latest
+    container_name: lab_brain_nodered
+    restart: unless-stopped
+    ports:
+      - "${NODERED_PORT:-1880}:1880"
+    environment:
+      TZ: ${TZ:-America/Chicago}
+    volumes:
+      - ${NODERED_DATA:-/srv/jetson/nodered}:/data
+
+  syncthing:
+    image: lscr.io/linuxserver/syncthing:latest
+    container_name: lab_brain_syncthing
+    restart: unless-stopped
+    ports:
+      - "${SYNCTHING_GUI_PORT:-8384}:8384"
+      - "22000:22000/tcp"
+      - "22000:22000/udp"
+      - "21027:21027/udp"
+    environment:
+      - TZ=${TZ:-America/Chicago}
+    volumes:
+      - ${SYNCTHING_DATA:-/srv/jetson/syncthing}:/config
+      - ${JETSON_DATA_ROOT:-/srv/jetson}:/sync
+
+  cncjs:
+    image: cncjs/cncjs:latest
+    container_name: lab_brain_cncjs
+    restart: unless-stopped
+    profiles: ["cnc"]
+    ports:
+      - "${CNCJS_PORT:-8000}:8000"
+    devices:
+      - "${CNC_SERIAL_DEVICE:-/dev/ttyUSB0}:${CNC_SERIAL_DEVICE:-/dev/ttyUSB0}"
+    volumes:
+      - ${CNCJS_DATA:-/srv/jetson/cncjs}:/root/.cncjs

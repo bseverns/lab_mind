@@ -1,0 +1,4 @@
+category,item_name,serial_or_tag,location,status,notes
+jetson,Jetson-A,,office,active,
+storage,NVMe SSD,,inside_jetson,active,
+network,Ethernet cable,,office,active,

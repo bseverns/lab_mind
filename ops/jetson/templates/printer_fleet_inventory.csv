@@ -1,0 +1,8 @@
+machine_type,machine_name,networked,digital_factory_visible,location,notes
+Sketch,Sketch-01,yes,,office,
+Sketch,Sketch-02,yes,,office,
+Sketch,Sketch-03,yes,,office,
+Sketch+,SketchPlus-01,yes,,office,
+Sketch+,SketchPlus-02,yes,,office,
+Method X,MethodX-01,yes,,office,
+Cubiko,Cubiko-01,no_or_local,,office,

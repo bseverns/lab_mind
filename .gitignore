@@ -1,0 +1,8 @@
+.env
+*.log
+*.tgz
+*.zip
+*.swp
+.DS_Store
+__pycache__/
+site/
