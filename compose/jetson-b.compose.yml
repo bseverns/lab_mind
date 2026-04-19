@@ -1,0 +1,16 @@
+services:
+  nodered:
+    image: nodered/node-red:latest
+    restart: unless-stopped
+    ports:
+      - "1880:1880"
+    volumes:
+      - /srv/labbrain/data/nodered:/data
+
+  status-page:
+    image: caddy:2
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    volumes:
+      - /srv/labbrain/status:/usr/share/caddy:ro

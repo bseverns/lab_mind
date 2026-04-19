@@ -1,5 +1,0 @@
-{$HEADSCALE_SERVER_NAME} {
-  encode zstd gzip
-  tls {$CADDY_ACME_EMAIL}
-  reverse_proxy headscale:8080
-}

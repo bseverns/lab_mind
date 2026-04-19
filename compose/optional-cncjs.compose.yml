@@ -1,0 +1,11 @@
+services:
+  cncjs:
+    image: cncjs/cncjs:latest
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    devices:
+      # Edit this after confirming the Cubiko controller path.
+      - "/dev/ttyUSB0:/dev/ttyUSB0"
+    volumes:
+      - /srv/labbrain/data/cncjs:/root/.cncjs

@@ -1,0 +1,12 @@
+# Service URLs
+
+LAB_BRAIN_COCKPIT=http://labbrain-a.local
+LAB_BRAIN_DOCS_FALLBACK=http://labbrain-c.local
+OPENWEBUI_URL=http://labbrain-a.local:3000
+OLLAMA_URL=http://127.0.0.1:11434
+PORTAINER_URL=https://labbrain-a.local:9443
+NODERED_URL=http://labbrain-b.local:1880
+SYNCTHING_A_URL=http://labbrain-a.local:8384
+SYNCTHING_C_URL=http://labbrain-c.local:8384
+CNCJS_URL=http://labbrain-a.local:8000
+DIGITAL_FACTORY_URL=https://digitalfactory.ultimaker.com/

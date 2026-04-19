@@ -1,25 +1,31 @@
-# Lab Brain
-Standalone documentation base for a single-box Jetson Orin Nano office/studio assistant that we use at our office.
+# Lab Brain Stack: Three-Jetson Addendum
 
-This kit is intentionally **bigger than necessary**.
-The goal is to give you one first-copy bundle with enough structure that you can delete what you do not need instead of discovering missing scaffolding later.
+This addendum reorients the standalone `lab_brain` repo around the current hardware reality:
 
-## What this bundle assumes
-- one primary Jetson Orin Nano dev kit (`Jetson-A`)
-- microSD as the easiest rebuild path
-- NVMe SSD attached for durable Docker data and service volumes
-- browser-first operation
-- private remote access via a Headscale-managed tailnet
-- Digital Factory remains the printer-side cloud pane
-- Cubiko is optional and only local if physically near the Jetson
+- **Jetson-A**: Jetson Orin Nano 8GB with NVMe. Main assistant/model host, cockpit, and private educator doorway.
+- **Jetson-B**: older Jetson Nano. Ops sentinel: health checks, Node-RED, printer/CNC status glue, alerts.
+- **Jetson-C**: older Jetson Nano. Documentation/recovery node: static docs mirror, Syncthing, backups, known-good-state archive.
 
-## Start here
-Open:
-- `docs/00_START_HERE.md`
-- `docs/06_BLANK_CARD_REBUILD.md`
-- `ops/jetson/HEADSCALE_VALUES.example`
+The point is not to build a fragile cluster. The point is to distribute responsibilities. Jetson-A thinks. Jetson-B watches. Jetson-C remembers.
 
-## Important posture
-This is a **private helper box**, not a public internet appliance.
-Do not expose your internal tools directly to the public web.
-Use the Headscale-controlled private path for operator access and keep public printer-facing work inside Digital Factory.
+## How to use this bundle
+
+Copy these folders into the existing standalone `lab_brain` repo:
+
+```bash
+cp -R docs ops compose scripts systemd templates handoff checklists dashboard <LAB_BRAIN_REPO>/
+```
+
+Then open:
+
+1. `docs/00_ORIENTATION.md`
+2. `docs/02_NODE_ROLES_THREE_JETSONS.md`
+3. `docs/06_MODEL_STRATEGY_CODE_ASSISTANT.md`
+4. `docs/17_DEPLOYMENT_PHASES.md`
+5. `handoff/INTERN_ONE_PAGER.md`
+
+## Design rule
+
+Do not distribute the model across the old Nanos. Distribute the jobs around the model.
+
+That keeps the room useful, legible, and recoverable.

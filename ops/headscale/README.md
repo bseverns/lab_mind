@@ -1,24 +1,14 @@
-# Headscale Control Plane Ops
+# Headscale Notes for Lab-Brain
 
-Standalone placeholder bundle for the lab-brain private access control plane.
+This folder is a placeholder for the lab-brain remote-access control plane notes.
 
-## Intent
-Make the Headscale VPS boring:
+The Headscale VPS should remain a narrow control-plane service.
 
-- one canonical VPS layout
-- one canonical Compose stack
-- one canonical backup path
-- one canonical restore path
+It should not become:
 
-## This bundle is for
-- the Headscale control-plane host
-- the private membership plane for Jetson-A and approved operator devices
+- the public lab dashboard
+- the model server
+- a general office VPN
+- a proxy for CNC control
 
-## This bundle is not for
-- public web apps
-- Digital Factory
-- printer management
-- general office VPN routing
-
-## Edit before use
-All host-specific values are placeholders until your VPS is final.
+Use `ops/jetson/HEADSCALE_VALUES.example` for node-specific editable values.

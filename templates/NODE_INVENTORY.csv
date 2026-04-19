@@ -1,0 +1,4 @@
+node,hostname,role,ip_lan,tailnet_name,storage,location,notes
+Jetson-A,labbrain-a,main assistant/model host,,,,,
+Jetson-B,labbrain-b,ops sentinel,,,,,
+Jetson-C,labbrain-c,docs recovery node,,,,,

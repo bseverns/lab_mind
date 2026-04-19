@@ -1,0 +1,18 @@
+{
+  "generated_at": "EDIT_ME",
+  "overall": "unknown",
+  "nodes": {
+    "labbrain-a": "unknown",
+    "labbrain-b": "unknown",
+    "labbrain-c": "unknown"
+  },
+  "services": {
+    "openwebui": "unknown",
+    "ollama": "unknown",
+    "portainer": "unknown",
+    "nodered": "unknown",
+    "docs": "unknown",
+    "digital_factory": "manual_check_required",
+    "cncjs": "optional"
+  }
+}

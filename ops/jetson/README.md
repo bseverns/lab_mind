@@ -1,18 +1,14 @@
-# Jetson Ops
+# Jetson Ops Folder
 
-This directory is the local operator bundle for the standalone lab-brain deployment.
+This folder contains editable operational files for the three-Jetson lab-brain layout.
 
-## Included
-- env templates
-- Docker Compose example
-- Headscale values placeholder sheet
-- scripts
-- bookmarks
-- inventory and rebuild templates
-- systemd examples
+## Files
 
-## Use
-1. fill `HEADSCALE_VALUES.example`
-2. copy `.env.example` to `.env`
-3. edit known values only
-4. start the stack with Docker Compose
+- `HEADSCALE_VALUES.example`: editable remote-access values; copy to a private local file before adding secrets.
+- `NODE_ROLE_VALUES.example`: editable hostnames, roles, and service ownership.
+- `SERVICE_URLS.example`: cockpit/service URLs.
+- `MODEL_VALUES.example`: model tags and tuning values after testing.
+
+## Rule
+
+Examples may live in Git. Secrets do not.

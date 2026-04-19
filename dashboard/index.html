@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lab Brain Cockpit</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 2rem; line-height: 1.5; max-width: 900px; }
+    h1 { margin-bottom: 0; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1rem; }
+    .card { border: 1px solid #bbb; border-radius: 10px; padding: 1rem; }
+    a { font-weight: 700; }
+    .warn { background: #fff8d6; }
+  </style>
+</head>
+<body>
+  <h1>Lab Brain Cockpit</h1>
+  <p>Jetson-A is the main assistant. Jetson-B watches. Jetson-C remembers.</p>
+  <div class="grid">
+    <div class="card"><h2>Assistant</h2><p><a href="http://labbrain-a.local:3000">Open WebUI</a></p></div>
+    <div class="card"><h2>Printers</h2><p><a href="https://digitalfactory.ultimaker.com/">Digital Factory</a></p></div>
+    <div class="card"><h2>Services</h2><p><a href="https://labbrain-a.local:9443">Portainer</a></p></div>
+    <div class="card"><h2>Automation</h2><p><a href="http://labbrain-b.local:1880">Node-RED</a></p></div>
+    <div class="card"><h2>Docs</h2><p><a href="http://labbrain-c.local">Docs fallback</a></p></div>
+    <div class="card warn"><h2>CNC</h2><p>Open CNCjs only after using the physical safety checklist.</p></div>
+  </div>
+  <h2>Class-day rule</h2>
+  <p>If something feels wrong: stop, photograph the screen, write the exact error, and use the checklist.</p>
+</body>
+</html>

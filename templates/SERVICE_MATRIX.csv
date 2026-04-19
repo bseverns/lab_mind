@@ -1,0 +1,8 @@
+service,primary_node,url,enabled,backup_node,notes
+Open WebUI,Jetson-A,http://labbrain-a.local:3000,yes,,
+Ollama,Jetson-A,http://127.0.0.1:11434,yes,,
+Portainer,Jetson-A,https://labbrain-a.local:9443,yes,,
+Node-RED,Jetson-B,http://labbrain-b.local:1880,yes,,
+Docs,Jetson-C,http://labbrain-c.local,yes,Jetson-A,
+CNCjs,EDIT_ME,http://labbrain-a.local:8000,optional,,
+Digital Factory,cloud,https://digitalfactory.ultimaker.com/,yes,,browser/cloud

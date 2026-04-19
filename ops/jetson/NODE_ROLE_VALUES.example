@@ -1,0 +1,13 @@
+# Node Role Values
+
+JETSON_A_ROLE=main_assistant_model_host
+JETSON_A_STORAGE=microSD_boot_NVMe_data
+JETSON_A_REQUIRED_SERVICES=ollama,openwebui,portainer,cockpit,syncthing
+
+JETSON_B_ROLE=ops_sentinel
+JETSON_B_STORAGE=microSD_or_small_local
+JETSON_B_REQUIRED_SERVICES=nodered,status_checks
+
+JETSON_C_ROLE=docs_recovery_node
+JETSON_C_STORAGE=microSD_plus_optional_usb_or_network_backup
+JETSON_C_REQUIRED_SERVICES=static_docs,syncthing,known_good_archive

@@ -1,0 +1,19 @@
+services:
+  docs:
+    image: caddy:2
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - /srv/labbrain/docs:/usr/share/caddy:ro
+
+  syncthing:
+    image: syncthing/syncthing:latest
+    restart: unless-stopped
+    ports:
+      - "8384:8384"
+      - "22000:22000/tcp"
+      - "22000:22000/udp"
+      - "21027:21027/udp"
+    volumes:
+      - /srv/labbrain/data/syncthing:/var/syncthing

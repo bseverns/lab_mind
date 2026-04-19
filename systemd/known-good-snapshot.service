@@ -1,0 +1,8 @@
+[Unit]
+Description=Capture Lab Brain known-good state snapshot
+Wants=network-online.target
+After=network-online.target docker.service
+
+[Service]
+Type=oneshot
+ExecStart=/srv/labbrain/scripts/capture_known_good_state.sh /srv/labbrain/known-good
