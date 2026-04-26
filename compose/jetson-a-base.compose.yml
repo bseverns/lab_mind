@@ -1,0 +1,29 @@
+# Jetson-A base service layer.
+# Bring this up first.
+#
+# This file starts the browser-facing assistant shell:
+# - cockpit
+# - Open WebUI
+#
+# The model backend comes from a separate profile file.
+
+services:
+  openwebui:
+    image: ghcr.io/open-webui/open-webui:main
+    restart: unless-stopped
+    ports:
+      - "3000:8080"
+    environment:
+      - OPENAI_API_BASE_URL=http://llamacpp:8080/v1
+      - OPENAI_API_KEY=none
+      - WEBUI_SECRET_KEY=EDIT_ME
+    volumes:
+      - /srv/labbrain/data/openwebui:/app/backend/data
+
+  cockpit:
+    image: caddy:2
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ../dashboard:/usr/share/caddy:ro

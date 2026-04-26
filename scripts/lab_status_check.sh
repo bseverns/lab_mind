@@ -11,13 +11,17 @@ check() {
   fi
 }
 
-check "cockpit" "http://labbrain-a.local"
-check "openwebui" "http://labbrain-a.local:3000"
-check "docs" "http://labbrain-c.local"
-check "nodered" "http://labbrain-b.local:1880"
+check "cockpit" "http://r900.local"
+check "docs" "http://r900.local/docs"
+check "portainer" "https://r900.local:9443"
+check "nodered" "http://r900.local:1880"
+check "openwebui" "http://jetson-a.local:3000"
 
-if curl -fsS --max-time 5 "http://labbrain-a.local:11434/api/tags" >/dev/null 2>&1; then
-  echo "GREEN ollama local api"
+MODEL_SERVER_URL="${MODEL_SERVER_URL:-${OLLAMA_URL:-http://127.0.0.1:8081}}"
+
+if curl -fsS --max-time 5 "$MODEL_SERVER_URL/api/tags" >/dev/null 2>&1 || \
+   curl -fsS --max-time 5 "$MODEL_SERVER_URL/v1/models" >/dev/null 2>&1; then
+  echo "GREEN local model api $MODEL_SERVER_URL"
 else
-  echo "YELLOW ollama local api not reachable through hostname; try on Jetson-A with 127.0.0.1"
+  echo "YELLOW local model api not reachable; check Jetson-A model stack"
 fi

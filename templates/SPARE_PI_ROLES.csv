@@ -1,0 +1,4 @@
+pi_id,hostname,role,attached_device,service,notes
+EDIT_ME,EDIT_ME,kiosk,none,display only,replaceable
+EDIT_ME,EDIT_ME,usb bridge,EDIT_ME,bridge or relay,replaceable
+EDIT_ME,EDIT_ME,sensor node,EDIT_ME,metrics or camera,replaceable

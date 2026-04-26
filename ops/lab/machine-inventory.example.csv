@@ -1,0 +1,8 @@
+node,hostname,role,class,ip_lan,tailnet_name,storage,location,notes
+R900,r900,infrastructure spine,server,,,,,backups/shared storage/monitoring/docs mirror
+Jetson-A,jetson-a,live assistant node,edge compute,,,,,Open WebUI and local model serving
+Jetson-B,jetson-b,edge support node,edge compute,,,,,room status and lightweight helpers
+Jetson-C,jetson-c,edge support node,edge compute,,,,,machine-adjacent helper roles
+Pi-01,pi-01,disposable edge appliance,raspberry pi,,,,,kiosk or signage placeholder
+Pi-02,pi-02,disposable edge appliance,raspberry pi,,,,,sensor or camera placeholder
+Pi-03,pi-03,disposable edge appliance,raspberry pi,,,,,USB or machine bridge placeholder

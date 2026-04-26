@@ -1,54 +1,57 @@
-# 08 — Browser Cockpit and Dashboard
+# 08 - Browser Cockpit and Dashboard
 
-## Purpose
+The operator experience should begin in a browser and stay in a browser.
+Do not make the room depend on a remote desktop when a simple internal page will do.
 
-The cockpit is the first page an educator or intern opens.
+## The cockpit promise
 
-It should answer:
+One screen should answer:
 
-- What is this system?
-- What is ready?
-- What is broken?
-- Where do I click next?
+- is the spine up
+- is the assistant up
+- are the printers visible
+- are the edge nodes alive
+- is the docs mirror available
+- is CNCjs enabled, if the machine path exists
 
-## Recommended cockpit sections
+## Recommended tiles
 
-1. **Today’s status**
-2. **Assistant**
-3. **Manufacturing systems**
-4. **Docs and checklists**
-5. **Recovery and incident logging**
-6. **Admin-only tools**
+Use a boring, explicit order:
 
-## Pinned tabs
+1. Open WebUI
+2. R900 internal site
+3. Portainer
+4. Node-RED
+5. Syncthing
+6. Digital Factory
+7. local docs mirror
+8. CNCjs only if enabled and physically appropriate
 
-On the spare tablet or lab browser:
+## What the cockpit is not
 
-1. Cockpit landing page
-2. Open WebUI
-3. Digital Factory
-4. Portainer
-5. Node-RED
-6. Docs mirror
-7. CNCjs only if physically appropriate
+Do not turn the cockpit into:
 
-## Dashboard files in this bundle
+- a wall of nested menus
+- a status page with hidden meaning
+- a remote desktop launcher
+- a control panel for secret values
+
+The cockpit should read like a map, not a puzzle.
+
+## One-screen rule
+
+If a beginner is standing at the tablet or lab browser, they should be able to:
+
+- open the assistant
+- open the docs
+- check printer status
+- open operator tools
+- stop before they touch unsafe controls
+
+## Good implementation targets
 
 - `dashboard/index.html`
-- `dashboard/status-example.json`
-- `scripts/make_static_dashboard.py`
+- `handoff/DASHBOARD_BOOKMARKS.html`
+- the R900 internal site
 
-These are intentionally simple. The dashboard should be boring enough that it can be fixed while tired.
-
-## Status language
-
-Use plain labels:
-
-- Ready
-- Degraded
-- Missing
-- Offline
-- Unknown
-- Do not use
-
-Avoid clever names. Cleverness is delightful until a substitute teacher has to debug it.
+Keep public/cloud traffic separate from this page.

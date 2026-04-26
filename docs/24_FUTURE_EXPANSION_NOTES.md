@@ -1,17 +1,18 @@
-# 24 — Future Expansion Notes
+# 24 - Future Expansion Notes
+
+Only add more pieces after the base stack is boring.
 
 ## Possible later additions
 
-Only add after the base stack is boring.
-
 - Home Assistant view for room status
-- Uptime Kuma for nicer checks
-- MQTT-based printer/CNC status events
-- small custom Digital Factory API bridge
+- nicer monitoring front ends
+- MQTT-based printer or CNC status events
+- a small custom Digital Factory bridge
 - local camera snapshots for non-printer machines
-- classHub helper integration over private network
-- automated known-good snapshot after successful class day
+- classHub helper integration over the private network
+- automated known-good snapshot after a successful class day
 - weekly incident summary generation
+- optional future VLAN separation if the room actually needs it
 
 ## Avoid until necessary
 

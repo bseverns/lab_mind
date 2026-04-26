@@ -1,5 +1,5 @@
 [Unit]
-Description=Lab Brain status check
+Description=Lab Mind status check
 Wants=network-online.target
 After=network-online.target
 

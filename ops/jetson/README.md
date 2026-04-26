@@ -1,13 +1,14 @@
 # Jetson Ops Folder
 
-This folder contains editable operational files for the three-Jetson lab-brain layout.
+This folder is retained for compatibility with older notes.
+The current editable placeholders live under `ops/lab/`.
 
 ## Files
 
-- `HEADSCALE_VALUES.example`: editable remote-access values; copy to a private local file before adding secrets.
-- `NODE_ROLE_VALUES.example`: editable hostnames, roles, and service ownership.
-- `SERVICE_URLS.example`: cockpit/service URLs.
-- `MODEL_VALUES.example`: model tags and tuning values after testing.
+- `HEADSCALE_VALUES.example`: legacy remote-access placeholder.
+- `NODE_ROLE_VALUES.example`: legacy host/role mapping.
+- `SERVICE_URLS.example`: legacy service URL placeholder.
+- `MODEL_VALUES.example`: legacy model placeholder.
 
 ## Rule
 

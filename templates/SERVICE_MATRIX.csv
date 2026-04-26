@@ -1,8 +1,15 @@
 service,primary_node,url,enabled,backup_node,notes
-Open WebUI,Jetson-A,http://labbrain-a.local:3000,yes,,
-Ollama,Jetson-A,http://127.0.0.1:11434,yes,,
-Portainer,Jetson-A,https://labbrain-a.local:9443,yes,,
-Node-RED,Jetson-B,http://labbrain-b.local:1880,yes,,
-Docs,Jetson-C,http://labbrain-c.local,yes,Jetson-A,
-CNCjs,EDIT_ME,http://labbrain-a.local:8000,optional,,
-Digital Factory,cloud,https://digitalfactory.ultimaker.com/,yes,,browser/cloud
+Docs mirror,R900,http://r900.local/docs,yes,,internal operational memory
+Shared storage,R900,/srv/shared,yes,,backups and archives
+Portainer,R900,https://r900.local:9443,yes,,server-side management
+Monitoring,R900,http://r900.local:9090,yes,,dashboards and alerts
+Node-RED,R900,http://r900.local:1880,yes,,optional automation and flow glue
+MQTT,R900,tcp://r900.local:1883,optional,,only if needed
+Open WebUI,Jetson-A,http://jetson-a.local:3000,yes,,assistant surface
+Model server,Jetson-A,http://jetson-a.local:8081,yes,,keep on Jetson-A
+Local docs/RAG,Jetson-A,http://jetson-a.local/docs,yes,R900 docs mirror,browser-first retrieval
+Room status dashboards,Jetson-B,http://jetson-b.local:8080,yes,R900 dashboards,machine-adjacent helper
+Service polling,Jetson-C,http://jetson-c.local:8080,yes,R900 monitoring,edge support helper
+Pi kiosks and signage,Pi nodes,EDIT_ME,optional,R900 docs mirror,replaceable edge appliances
+Digital Factory,cloud,https://digitalfactory.ultimaker.com/,yes,,browser/cloud source of truth
+CNCjs,optional,EDIT_ME,optional,,only if physically attached and approved

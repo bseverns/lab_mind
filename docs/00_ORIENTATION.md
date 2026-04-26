@@ -1,66 +1,115 @@
-# 00 — Orientation
+# 00 - Orientation
 
-## What changed
+This repo now describes a lab with a stable spine and replaceable edge devices.
 
-The lab-brain stack now assumes **three Jetson-class machines** are available:
+The current intended topology is:
 
-- one stronger Jetson-A, the Orin Nano 8GB with NVMe
-- two older Jetson Nano boards
+- the **Dell PowerEdge R900** as the infrastructure spine
+- **Jetson-A** as the live assistant node
+- **Jetson-B and Jetson-C** as edge support nodes
+- **Raspberry Pis** as disposable kiosks, displays, bridges, and sensor nodes
+- an **Ethernet switch** as the room containment layer
+- **Headscale** as private access control plane
+- **Digital Factory** as the printer cloud source of truth
+- optional **Cubiko/CNC** integration only when the machine is physically adjacent
 
-The old question was: “Can we make one always-on assistant?”
-
-The better question is now:
-
-> How do we make the lab legible, recoverable, and locally intelligent without creating a fragile shrine to infrastructure?
-
-## Answer
-
-Use the Orin as the actual model/assistant host. Use the older Nanos as support nodes.
+The point is not to create a cluster.
+The point is to keep the room legible, recoverable, and boring enough to survive rebuilds.
 
 ```mermaid
 flowchart LR
-  Educator[Educator laptop / tablet]
-  HS[Headscale control plane]
-  A[Jetson-A\nOrin Nano 8GB\nassistant + cockpit]
-  B[Jetson-B\nNano\nops sentinel]
-  C[Jetson-C\nNano\ndocs + recovery]
-  DF[Digital Factory]
-  CNC[Cubiko CNC]
+  Internet[Public internet]
+  Headscale[Headscale control plane]
+  Cloud[Digital Factory cloud]
+  Switch[Ethernet switch]
+  R900[Dell PowerEdge R900\nspine: backups, storage, monitoring,\ndashboards, Portainer, docs mirror,\nknown-good archive, memory]
+  A[Jetson-A\nOrin Nano\nassistant + model host]
+  B[Jetson-B\nJetson Nano\nedge support node]
+  C[Jetson-C\nJetson Nano\nedge support node]
+  Pis[Raspberry Pis\nkiosks, bridges, sensors, signage]
+  Browser[Educator laptop/tablet\nbrowser-first]
+  CNC[Cubiko/CNC\noptional, local only]
 
-  Educator --> HS
-  HS -. private access .-> A
-  A --> DF
+  Internet --> Headscale
+  Browser --> Headscale
+  Headscale -. private access .-> R900
+  Headscale -. private access .-> A
+  Headscale -. private access .-> B
+  Headscale -. private access .-> C
+  Browser --> Cloud
+  R900 --- Switch
+  A --- Switch
+  B --- Switch
+  C --- Switch
+  Pis --- Switch
+  R900 --> Cloud
+  A --> Cloud
   A --> CNC
-  B --> A
-  B --> DF
-  C --> A
-  C --> B
 ```
 
-## Names
+## Canonical names
 
-Use these names consistently:
+Use one stable name per node class:
 
-| Name | Role | Hostname suggestion |
+| Node | Role | Placeholder hostname |
 |---|---|---|
-| Jetson-A | main assistant/model host | `labbrain-a` |
-| Jetson-B | ops sentinel | `labbrain-b` |
-| Jetson-C | docs/recovery node | `labbrain-c` |
-| Headscale VPS | remote access control plane | `hs.creatempls.org` |
+| R900 | infrastructure spine | `r900` |
+| Jetson-A | live assistant node | `jetson-a` |
+| Jetson-B | edge support node | `jetson-b` |
+| Jetson-C | edge support node | `jetson-c` |
+| Pi nodes | disposable edge appliances | `pi-01`, `pi-02`, ... |
 
-## The important boundary
+## What the spine owns
 
-Jetson-A can be remotely reachable through the private Headscale-managed network. That does not mean it should be publicly exposed.
+The R900 should carry the durable pieces:
 
-Do not port-forward the assistant, dashboards, CNC tools, or docs to the public internet unless there is a deliberate, reviewed reason.
+- backups
+- shared storage
+- monitoring
+- dashboards
+- Portainer server
+- Node-RED and/or MQTT if the lab actually needs them
+- docs mirror or static internal site
+- known-good-state archive
+- internal operational memory
+
+The R900 should not be assumed to be the primary inference box unless later documentation explicitly says so.
+
+## What Jetson-A owns
+
+Jetson-A is the live local assistant node:
+
+- Open WebUI
+- local model serving
+- code-assistant workflows
+- local docs and RAG
+- browser-first educator access
+- optional CNCjs if physically appropriate
+
+## What the edge nodes own
+
+Jetson-B and Jetson-C are support nodes:
+
+- room status
+- service polling
+- local dashboards
+- machine-adjacent helper roles
+
+Raspberry Pis are smaller still:
+
+- kiosks
+- displays
+- USB bridges
+- signage
+- sensors and cameras where useful
 
 ## Success state
 
-The stack is working when:
+The lab is in a good state when:
 
-- Jetson-A can answer code/ops questions from local docs.
-- Jetson-B can report whether services and machines are alive.
-- Jetson-C can serve docs even if Jetson-A is being rebuilt.
-- Digital Factory remains the source of truth for MakerBot/UltiMaker printer cloud state.
-- Cubiko control is local and safety-adjacent, not safety-replacing.
-- Educators can reach the cockpit privately when away from the room.
+- the R900 can restore the room map and serve the docs mirror
+- Jetson-A can answer local assistant requests without reaching for public services first
+- the edge nodes can report room and machine state without depending on the assistant node
+- Digital Factory remains the source of truth for printer fleet state
+- private control traffic stays private
+- public browser traffic stays separate

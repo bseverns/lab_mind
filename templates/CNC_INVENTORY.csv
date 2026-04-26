@@ -1,0 +1,2 @@
+machine_id,machine_name,type,controller,host_node,connection,status,notes
+EDIT_ME,EDIT_ME,CNC,EDIT_ME,EDIT_ME,EDIT_ME,optional,fill physical attachment and controller path

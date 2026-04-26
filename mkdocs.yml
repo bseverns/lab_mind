@@ -1,11 +1,40 @@
-site_name: Lab Brain
-site_description: Standalone Jetson lab-brain docs
+site_name: Lab Mind
+site_description: Recoverable lab topology and operations docs
 theme:
   name: material
 nav:
-  - Start Here: docs/00_START_HERE.md
-  - Architecture: docs/02_ARCHITECTURE.md
-  - Blank Card Rebuild: docs/06_BLANK_CARD_REBUILD.md
-  - Remote Access: docs/11_HEADSCALE_JETSON_SIDE.md
-  - Digital Factory: docs/09_DIGITAL_FACTORY_SETUP.md
-  - Operations: docs/18_BACKUP_AND_RESTORE.md
+  - Home: index.md
+  - Orientation: docs/00_ORIENTATION.md
+  - Network Reality: docs/01_NETWORK_REALITY.md
+  - Node Roles: docs/02_NODE_ROLES_THREE_JETSONS.md
+  - Jetson-A Assistant: docs/03_JETSON_A_MAIN_ASSISTANT.md
+  - Jetson Nano Roles: docs/04_JETSON_B_OPS_SENTINEL.md
+  - Jetson-C Notes: docs/05_JETSON_C_DOCS_RECOVERY.md
+  - Model Strategy: docs/06_MODEL_STRATEGY_CODE_ASSISTANT.md
+  - Service Placement: docs/07_SERVICE_PLACEMENT_MATRIX.md
+  - Browser Cockpit: docs/08_BROWSER_COCKPIT_AND_DASHBOARD.md
+  - Headscale Access: docs/09_REMOTE_ACCESS_WITH_HEADSCALE.md
+  - Digital Factory: docs/10_DIGITAL_FACTORY_COMPANION.md
+  - CNC Path: docs/11_CUBIKO_CNC_PATH.md
+  - Local Docs and RAG: docs/12_LOCAL_DOCS_AND_RAG.md
+  - Incident Logging: docs/13_INCIDENT_RECORDER.md
+  - Known Good State: docs/14_KNOWN_GOOD_STATE.md
+  - Safety Boundary: docs/15_PRIVACY_AND_SAFETY_BOUNDARY.md
+  - Teaching The Lab Mind: docs/16_TEACHING_THE_LAB_BRAIN.md
+  - Deployment Phases: docs/17_DEPLOYMENT_PHASES.md
+  - Operations Runbook: docs/18_OPERATIONS_RUNBOOK.md
+  - Failure Modes: docs/19_FAILURE_MODES_AND_RECOVERY.md
+  - Model Evaluation: docs/20_MODEL_EVALUATION_PROTOCOL.md
+  - Backup And Restore: docs/21_BACKUP_AND_RESTORE.md
+  - Tablet Kiosk Flow: docs/22_TABLET_KIOSK_OPERATOR_FLOW.md
+  - Nano Limits: docs/23_NANO_LIMITS_AND_JOBS.md
+  - Future Notes: docs/24_FUTURE_EXPANSION_NOTES.md
+  - Jetson-A Build Pieces: docs/25_JETSON_A_MODEL_BUILD_PIECES.md
+  - R900 Remote Code Backend: docs/26_R900_REMOTE_CODE_BACKEND.md
+  - Cooperative Code Mode: docs/27_COOPERATIVE_CODE_MODE.md
+  - Handoffs:
+      - Intern One Pager: handoff/INTERN_ONE_PAGER.md
+      - Operator Toggle Checklist: handoff/OPERATOR_TOGGLE_CHECKLIST.md
+      - Model Switch Card: handoff/MODEL_SWITCH_CARD.md
+      - Blank Card Rebuild: handoff/BLANK_CARD_REBUILD.md
+      - Printable Quickstart: handoff/PRINTABLE_QUICKSTART.md

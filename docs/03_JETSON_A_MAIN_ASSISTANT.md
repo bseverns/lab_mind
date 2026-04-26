@@ -1,71 +1,56 @@
-# 03 — Jetson-A Main Assistant
+# 03 - Jetson-A Main Assistant
 
-## Purpose
+Jetson-A is the live local assistant node.
+It is the place where a person should be able to open a browser and get help without thinking about the rest of the room.
 
-Jetson-A is the main lab-brain. It hosts the local model, the assistant UI, the primary dashboard, and the most useful private remote access surface.
+## What belongs here
 
-It should feel like a calm operator station, not a pile of unrelated web apps.
-
-## Required services
-
-- Docker Engine
-- Docker Compose v2
-- Ollama or llama.cpp server
 - Open WebUI
-- Portainer
-- static cockpit/dashboard page
-- Headscale-compatible client
-- Syncthing client
+- local model serving
+- code-assistant workflows
+- local docs and RAG
+- browser-first educator access
+- small private helper services needed by the assistant experience
+- optional CNCjs if the machine is physically adjacent and the safety path is documented
 
-## Recommended storage layout
+## What does not belong here
 
-Use microSD for boot and NVMe for durable service data.
+- the known-good archive
+- shared storage as the primary source of truth
+- monitoring as the only place the room can be observed
+- public dashboards
+- distributed inference across the Nanos
+- any service that would make Jetson-A impossible to rebuild cleanly
 
-```text
-/srv/docker
-/srv/labbrain
-/srv/labbrain/config
-/srv/labbrain/data
-/srv/labbrain/data/ollama
-/srv/labbrain/data/openwebui
-/srv/labbrain/data/portainer
-/srv/labbrain/data/syncthing
-/srv/labbrain/docs
-/srv/labbrain/known-good
-/srv/labbrain/incidents
-```
+## Operating assumptions
 
-## Default ports
+1. Jetson-A is the only node that should feel interactive and intelligent.
+2. Jetson-A should be reachable through Headscale for trusted users, not publicly exposed.
+3. Jetson-A can fail without taking the rest of the room down.
 
-| Service | Default URL | Notes |
+## Service sketch
+
+| Service | Expected path | Notes |
 |---|---|---|
-| Cockpit | `http://labbrain-a.local` | static landing page |
-| Open WebUI | `http://labbrain-a.local:3000` | or proxied path |
-| Ollama | `http://127.0.0.1:11434` | bind local unless intentionally proxied |
-| Portainer | `https://labbrain-a.local:9443` | private only |
-| Syncthing | `http://labbrain-a.local:8384` | private only |
-| CNCjs | `http://labbrain-a.local:8000` | only if Cubiko attached |
+| Open WebUI | `http://jetson-a.local:3000` | assistant surface |
+| Model server | `http://jetson-a.local:8081` | local only |
+| Local docs/RAG | `http://jetson-a.local/docs` | browser-first retrieval |
+| Private educator path | Headscale tailnet | not public |
+| CNCjs | `EDIT_ME` | only if physically appropriate |
 
-## Assistant prompt posture
+## Good habits
 
-The assistant should be told:
+- keep model choices in `ops/lab/model-values.example`
+- keep URLs in `ops/lab/service-urls.example`
+- keep hostnames in `ops/lab/hostnames.example`
+- log model tests in `templates/MODEL_TEST_LOG.csv`
+- assume the R900 is the archive and recovery home
 
-- it is an on-site operations assistant
-- it should prefer repo docs and local checklists
-- it should ask for exact error text
-- it should not invent Headscale values
-- it should not claim to control machines unless it truly does
-- it should redirect CNC safety questions to human checklist and adult supervision
+## Recovery note
 
-## Day-one model plan
+If Jetson-A is down, the room should still have:
 
-Use two models:
-
-1. small fast general model for everyday questions
-2. larger quantized code model for code and scripts
-
-Document exact model tags in `templates/MODEL_TEST_LOG.csv` once tested.
-
-## Failure rule
-
-If Jetson-A is down, Jetson-C should still serve rebuild docs.
+- the R900 docs mirror
+- the inventory templates
+- the known-good-state archive
+- the browser path to explain what should be rebuilt

@@ -1,0 +1,8 @@
+model_family,size_class,quantization,expected_fit,backend,context,max_tokens,notes,fit_result
+Qwen2.5-1.5B-Instruct,small,GGUF_or_other_quantized,likely,llama.cpp,EDIT_ME,EDIT_ME,fast assistant candidate,unknown
+Llama-3.2-1B-Instruct,small,GGUF_or_other_quantized,likely,llama.cpp,EDIT_ME,EDIT_ME,alternate fast assistant candidate,unknown
+Qwen2.5-Coder-1.5B-Instruct,small_code,GGUF_or_other_quantized,likely,llama.cpp,EDIT_ME,EDIT_ME,light code helper candidate,unknown
+Qwen2.5-Coder-3B-Instruct,mid_code,GGUF_or_other_quantized,likely,llama.cpp,EDIT_ME,EDIT_ME,primary code assistant candidate,unknown
+Llama-3.2-3B-Instruct,mid,GGUF_or_other_quantized,maybe,llama.cpp,EDIT_ME,EDIT_ME,general fallback candidate,unknown
+Qwen2.5-7B-Instruct,large,GGUF_or_other_quantized,maybe_if_tight,llama.cpp,EDIT_ME,EDIT_ME,heavier practical local model candidate,unknown
+Gemma-2-9B-IT,large,GGUF_or_other_quantized,maybe_if_room,llama.cpp,EDIT_ME,EDIT_ME,heaviest Google-family candidate,unknown

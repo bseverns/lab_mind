@@ -1,6 +1,4 @@
-# 22 — Tablet / Kiosk Operator Flow
-
-## Purpose
+# 22 - Tablet / Kiosk Operator Flow
 
 A spare tablet can become the low-friction window into the room.
 
@@ -8,32 +6,32 @@ A spare tablet can become the low-friction window into the room.
 
 Add bookmarks for:
 
-- Lab Brain Cockpit
+- Lab Mind cockpit
 - Open WebUI
 - Digital Factory
-- Docs Mirror
-- Incident Form/Template
-- Class Startup Checklist
-- Class Shutdown Checklist
+- R900 docs mirror
+- Incident template
+- Class startup checklist
+- Class shutdown checklist
 
 ## Kiosk behavior
 
-The tablet should not require the intern to remember hostnames.
+The tablet should not require the operator to remember hostnames.
 
 Start page:
 
 ```text
-http://labbrain-a.local
+http://r900.local
 ```
 
-Fallback page:
+Assistant page:
 
 ```text
-http://labbrain-c.local
+http://jetson-a.local:3000
 ```
 
 ## Printed fallback
 
-Keep `handoff/INTERN_ONE_PAGER.md` printed near the tablet.
+Keep `handoff/INTERN_ONE_PAGER.md` and `handoff/BLANK_CARD_REBUILD.md` printed near the tablet.
 
 Paper is not a failure of technology. Paper is a graceful degradation mode.

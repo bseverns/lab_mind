@@ -1,12 +1,7 @@
-services:
-  docs:
-    image: caddy:2
-    restart: unless-stopped
-    ports:
-      - "80:80"
-    volumes:
-      - /srv/labbrain/docs:/usr/share/caddy:ro
+# Legacy edge-support example.
+# The docs mirror now belongs on the R900; keep this node for local helper work.
 
+services:
   syncthing:
     image: syncthing/syncthing:latest
     restart: unless-stopped

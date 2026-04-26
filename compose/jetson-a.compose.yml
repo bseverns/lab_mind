@@ -1,3 +1,6 @@
+# Legacy assistant-node example.
+# Portainer and the durable spine services now belong on the R900.
+
 services:
   openwebui:
     image: ghcr.io/open-webui/open-webui:main
@@ -5,20 +8,10 @@ services:
     ports:
       - "3000:8080"
     environment:
-      - OLLAMA_BASE_URL=http://host.docker.internal:11434
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
+      - OPENAI_API_BASE_URL=http://llamacpp:8080/v1
+      - OPENAI_API_KEY=none
     volumes:
       - /srv/labbrain/data/openwebui:/app/backend/data
-
-  portainer:
-    image: portainer/portainer-ce:latest
-    restart: unless-stopped
-    ports:
-      - "9443:9443"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /srv/labbrain/data/portainer:/data
 
   cockpit:
     image: caddy:2

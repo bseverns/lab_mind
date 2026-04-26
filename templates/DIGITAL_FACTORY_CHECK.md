@@ -6,9 +6,10 @@ Workspace:
 
 ## Expected fleet
 
-- [ ] 3 MakerBot Sketch visible
-- [ ] 2 MakerBot Sketch+ visible
-- [ ] 1 Method X visible
+- [ ] fleet list matches inventory template
+- [ ] workspace ID is correct
+- [ ] no mystery duplicates
+- [ ] all expected printers are visible
 
 ## Notes
 

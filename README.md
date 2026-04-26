@@ -1,31 +1,70 @@
-# Lab Brain Stack: Three-Jetson Addendum
+# Lab Mind
 
-This addendum reorients the standalone `lab_brain` repo around the current hardware reality:
+This repository documents the lab as a recoverable, boring, mixed-hardware system.
 
-- **Jetson-A**: Jetson Orin Nano 8GB with NVMe. Main assistant/model host, cockpit, and private educator doorway.
-- **Jetson-B**: older Jetson Nano. Ops sentinel: health checks, Node-RED, printer/CNC status glue, alerts.
-- **Jetson-C**: older Jetson Nano. Documentation/recovery node: static docs mirror, Syncthing, backups, known-good-state archive.
+Current intended topology:
 
-The point is not to build a fragile cluster. The point is to distribute responsibilities. Jetson-A thinks. Jetson-B watches. Jetson-C remembers.
+- **Dell PowerEdge R900**: infrastructure spine for backups, shared storage, monitoring, dashboards, Portainer server, docs mirror, known-good-state archive, and internal operational memory.
+- **Jetson-A**: Jetson Orin Nano live assistant node for Open WebUI, local model serving, code-assistant workflows, local docs/RAG, and browser-first educator access.
+- **Jetson Nano B/C**: edge/support nodes for room status, service polling, local dashboards, and machine-adjacent helper roles.
+- **Raspberry Pis**: disposable edge appliances for kiosks, displays, USB/machine bridges, signage, and sensors/cameras when useful.
+- **Ethernet switch**: the wiring and containment layer for the whole room.
+- **Headscale**: private control plane for remote access, not the public app surface.
+- **Digital Factory**: source of truth for 3D printer fleet management.
+- **Cubiko/CNC**: optional, physically attached integration only.
 
-## How to use this bundle
+Design constraints:
 
-Copy these folders into the existing standalone `lab_brain` repo:
+- Do not treat this as a Kubernetes cluster.
+- Do not distribute one model across all machines.
+- Keep public/browser traffic separate from private control/model traffic.
+- Keep the architecture boring, durable, and recoverable.
+- Prefer browser-first operations over remote desktop.
+- Prefer editable placeholders over invented final values.
+
+## Read This First
+
+Start with:
+
+1. [`docs/index.md`](docs/index.md)
+2. [`docs/00_ORIENTATION.md`](docs/00_ORIENTATION.md)
+3. [`docs/01_NETWORK_REALITY.md`](docs/01_NETWORK_REALITY.md)
+4. [`docs/07_SERVICE_PLACEMENT_MATRIX.md`](docs/07_SERVICE_PLACEMENT_MATRIX.md)
+5. [`docs/17_DEPLOYMENT_PHASES.md`](docs/17_DEPLOYMENT_PHASES.md)
+6. [`docs/06_MODEL_STRATEGY_CODE_ASSISTANT.md`](docs/06_MODEL_STRATEGY_CODE_ASSISTANT.md)
+7. [`docs/25_JETSON_A_MODEL_BUILD_PIECES.md`](docs/25_JETSON_A_MODEL_BUILD_PIECES.md)
+8. [`docs/27_COOPERATIVE_CODE_MODE.md`](docs/27_COOPERATIVE_CODE_MODE.md)
+9. [`handoff/INTERN_ONE_PAGER.md`](handoff/INTERN_ONE_PAGER.md)
+10. [`handoff/OPERATOR_TOGGLE_CHECKLIST.md`](handoff/OPERATOR_TOGGLE_CHECKLIST.md)
+11. [`handoff/MODEL_SWITCH_CARD.md`](handoff/MODEL_SWITCH_CARD.md)
+12. [`handoff/MODEL_CHOICE_LADDER.md`](handoff/MODEL_CHOICE_LADDER.md)
+
+## Where The Editable Placeholders Live
+
+- `ops/lab/` contains hostnames, URLs, Headscale values, and workspace placeholders.
+- `compose/jetson-a-llamacpp.compose.yml` is the local-model stack template for Jetson-A.
+- `compose/jetson-a-base.compose.yml`, `compose/jetson-a-fast.compose.yml`, `compose/jetson-a-code.compose.yml`, and `compose/jetson-a-heavy.compose.yml` are the staged build pieces.
+- `compose/r900-code.compose.yml` and `compose/jetson-a-remote-code.compose.yml` are the optional remote code backend pieces.
+- `templates/MODEL_SHORTLIST.example.md` is the candidate model shortlist.
+- `templates/` contains inventory and recovery templates.
+- `dashboard/` contains a simple browser cockpit starter.
+
+## Build The Wiki
+
+Use the wiki build helper when you want a static site:
 
 ```bash
-cp -R docs ops compose scripts systemd templates handoff checklists dashboard <LAB_BRAIN_REPO>/
+./scripts/build_wiki.sh
 ```
 
-Then open:
+Install the docs dependencies first if needed:
 
-1. `docs/00_ORIENTATION.md`
-2. `docs/02_NODE_ROLES_THREE_JETSONS.md`
-3. `docs/06_MODEL_STRATEGY_CODE_ASSISTANT.md`
-4. `docs/17_DEPLOYMENT_PHASES.md`
-5. `handoff/INTERN_ONE_PAGER.md`
+```bash
+python3 -m pip install -r requirements-wiki.txt
+```
 
-## Design rule
+Use `mkdocs serve` if you want a live preview while editing.
 
-Do not distribute the model across the old Nanos. Distribute the jobs around the model.
+## Rule Of Thumb
 
-That keeps the room useful, legible, and recoverable.
+The R900 stores and restores the room. Jetson-A talks to people. The Nanos and Pis do edge work. Nothing should depend on magic that cannot be rebuilt from the docs.

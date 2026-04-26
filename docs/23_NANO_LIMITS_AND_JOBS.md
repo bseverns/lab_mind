@@ -1,27 +1,28 @@
-# 23 — Older Jetson Nano Limits and Jobs
+# 23 - Jetson Nano Limits and Jobs
 
-## What the old Nanos are good at
+The Jetson Nanos are support nodes, not assistant nodes.
+They are useful when they stay small.
 
-- static docs
+## What they are good at
+
+- room status
 - health checks
-- Node-RED flows
-- light scripts
-- status dashboards
-- Syncthing
-- MQTT
-- simple camera/sensor jobs
-- recovery documentation
+- lightweight status dashboards
+- simple bridge tasks
+- simple camera or sensor jobs
+- machine-adjacent helper duties
 
 ## What they are not good at
 
-- largest local code models
+- large local code models
 - distributed LLM inference for this room
 - heavy embeddings over huge corpora
-- being reliable high-load GPU servers
+- being reliable high-load server boxes
+- becoming the only copy of anything important
 
 ## Rule
 
-Use the Nanos to make the lab-brain more reliable, not more theatrical.
+Use the Nanos to make the lab more reliable, not more theatrical.
 
 ## Good Nano jobs
 
@@ -34,13 +35,13 @@ Jetson-B:
 
 Jetson-C:
 
-- host docs
-- store snapshots
-- keep recovery path alive
+- host local dashboard panels
+- keep machine-adjacent helper views alive
+- mirror lightweight status if needed
 
 ## Bad Nano jobs
 
-- “part of the big brain” model cluster
+- part of the big-brain model cluster
 - extra copy of every service
 - remote CNC controller from across the room
 - secret storage without a security plan

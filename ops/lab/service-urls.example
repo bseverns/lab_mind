@@ -1,0 +1,22 @@
+# Service URLs
+
+R900_INTERNAL_SITE=http://r900.local
+R900_DOCS_MIRROR=http://r900.local/docs
+R900_PORTAINER=https://r900.local:9443
+R900_NODE_RED=http://r900.local:1880
+R900_MQTT=tcp://r900.local:1883
+
+JETSON_A_OPEN_WEBUI=http://jetson-a.local:3000
+JETSON_A_MODEL_SERVER=http://jetson-a.local:8081
+JETSON_A_PORTAINER=https://jetson-a.local:9443
+JETSON_A_LOCAL_DOCS=http://jetson-a.local/docs
+
+JETSON_B_STATUS_PAGE=http://jetson-b.local:8080
+JETSON_C_STATUS_PAGE=http://jetson-c.local:8080
+
+DIGITAL_FACTORY_URL=https://digitalfactory.ultimaker.com/
+HEADSCALE_ADMIN_URL=EDIT_ME
+TAILNET_BASE_DOMAIN=EDIT_ME
+
+CNCJS_URL=EDIT_ME_if_enabled
+SYNCTHING_PORTAL=EDIT_ME_if_used

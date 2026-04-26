@@ -1,0 +1,63 @@
+# Model profiles
+#
+# This file gives concrete starter profiles for the lab.
+# Fill in the real model file names after download and testing.
+
+profiles:
+  fast_local:
+    label: fast_local
+    node: jetson-a
+    model_family: Qwen2.5-1.5B-Instruct
+    quantization: GGUF_Q4_K_M
+    backend: llama.cpp
+    backend_url: http://llamacpp:8080/v1
+    model_file: /srv/labbrain/models/fast/EDIT_ME-qwen2.5-1.5b-instruct.gguf
+    context_size: 2048
+    max_tokens: 512
+    compose_files:
+      - compose/jetson-a-base.compose.yml
+      - compose/jetson-a-fast.compose.yml
+
+  code_local:
+    label: code_local
+    node: jetson-a
+    model_family: Qwen2.5-Coder-3B-Instruct
+    quantization: GGUF_Q4_K_M
+    backend: llama.cpp
+    backend_url: http://llamacpp:8080/v1
+    model_file: /srv/labbrain/models/code/EDIT_ME-qwen2.5-coder-3b-instruct.gguf
+    context_size: 4096
+    max_tokens: 768
+    compose_files:
+      - compose/jetson-a-base.compose.yml
+      - compose/jetson-a-code.compose.yml
+
+  code_remote_r900:
+    label: code_remote_r900
+    node: r900
+    model_family: Qwen2.5-Coder-7B-Instruct
+    quantization: GGUF_Q4_K_M
+    backend: llama.cpp
+    backend_url: http://r900.local:8081/v1
+    model_file: /srv/labbrain/models/remote-code/EDIT_ME-qwen2.5-coder-7b-instruct.gguf
+    context_size: 4096
+    max_tokens: 768
+    compose_files:
+      - compose/r900-code.compose.yml
+      - compose/jetson-a-base.compose.yml
+      - compose/jetson-a-remote-code.compose.yml
+
+  heavy_remote_r900:
+    label: heavy_remote_r900
+    node: r900
+    model_family: Qwen2.5-7B-Instruct
+    quantization: GGUF_Q4_K_M
+    backend: llama.cpp
+    backend_url: http://r900.local:8081/v1
+    model_file: /srv/labbrain/models/remote-heavy/EDIT_ME-qwen2.5-7b-instruct.gguf
+    context_size: 4096
+    max_tokens: 768
+    compose_files:
+      - compose/r900-code.compose.yml
+      - compose/jetson-a-base.compose.yml
+      - compose/jetson-a-remote-code.compose.yml

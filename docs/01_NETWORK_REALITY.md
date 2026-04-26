@@ -1,54 +1,109 @@
-# 01 — Network Reality
+# 01 - Network Reality
 
-## Network layers
+The lab has four practical zones:
 
-The lab-brain network has three layers:
+1. the **public internet** for cloud services and software updates
+2. the **Headscale tailnet** for trusted private access
+3. the **local LAN** for room devices and wired services
+4. the **machine-adjacent edge** for devices that should not be treated like general servers
 
-1. **Local LAN** — office network, printers, Jetsons, tablets.
-2. **Private tailnet** — Headscale-managed remote educator/admin access.
-3. **Cloud services** — Digital Factory, GitHub, package registries, software updates.
+```mermaid
+flowchart TB
+  Public[Public internet]
+  Tailnet[Headscale tailnet]
+  LAN[Local LAN]
+  Edge[Machine-adjacent edge]
 
-Do not confuse those layers.
-
-## What belongs where
-
-| Traffic | Route | Notes |
-|---|---|---|
-| Educator remote access to Jetson-A | Headscale/tailnet | private, authenticated |
-| Open WebUI from office tablet | LAN or tailnet | never public by default |
-| Digital Factory | public cloud browser/API | printer ecosystem source of truth |
-| Cubiko CNC control | local USB / local web UI | keep physical safety local |
-| Docker/package updates | public internet | controlled maintenance window preferred |
-| Student/general browser traffic | normal public web | do not send through lab tailnet |
-
-## DNS names to reserve
-
-Editable suggestions:
-
-```text
-labbrain-a.local
-labbrain-b.local
-labbrain-c.local
-labbrain-a.tail.creatempls.org
-labbrain-b.tail.creatempls.org
-labbrain-c.tail.creatempls.org
-hs.creatempls.org
+  Public --> Tailnet
+  Tailnet --> LAN
+  LAN --> Edge
 ```
 
-## Avoid
+## Switch role
 
-- exposing Portainer publicly
-- exposing Open WebUI publicly
-- exposing Node-RED publicly
-- exposing CNCjs publicly
-- making Headscale a general office VPN
-- making the lab-brain the router for the room
+The Ethernet switch is the containment layer for the room.
 
-## Good enough first target
+Use it to keep:
 
-At first, the network only needs to support:
+- the R900 wired
+- Jetson-A wired
+- the Jetson Nanos wired when possible
+- Pis on cable instead of Wi-Fi when the job matters
+- machine bridges off the general wireless path
 
-- a browser on the LAN opening Jetson-A cockpit
-- educator remote access to Jetson-A through Headscale
-- Jetson-B checking Jetson-A health
-- Jetson-C serving static docs
+The switch is where boring reliability starts.
+
+## Naming conventions
+
+Keep names short, predictable, and role-based:
+
+| Class | Pattern | Example |
+|---|---|---|
+| spine server | `r900` | `r900` |
+| assistant node | `jetson-a` | `jetson-a` |
+| edge support nodes | `jetson-b`, `jetson-c` | `jetson-b` |
+| Pi nodes | `pi-01`, `pi-02`, ... | `pi-03` |
+| optional machine bridge | `printer-*` or `cnc-*` | `printer-bridge-01` |
+
+Do not invent alternate names for the same box.
+
+## Private versus public traffic
+
+Private traffic:
+
+- R900 admin surfaces
+- Jetson-A assistant and local model traffic
+- monitoring and dashboard access
+- docs mirror access
+- machine control traffic
+- Headscale enrollment and node-to-node access
+
+Public traffic:
+
+- Digital Factory
+- package registries
+- GitHub and docs sources
+- software updates
+
+If a browser can reach it from hotel Wi-Fi, assume it is public.
+If a browser needs Headscale or a lab cable, assume it is private.
+
+## Headscale posture
+
+Headscale is the control plane, not the public app.
+
+Use it for:
+
+- trusted device enrollment
+- private service reachability
+- private admin access
+
+Do not turn it into:
+
+- a public dashboard
+- a model host
+- a proxy for CNC control
+- a generic office VPN unless that is separately documented and reviewed
+
+## Optional future VLAN ideas
+
+Future segmentation can happen, but only if the room needs it and the docs stay readable.
+
+Possible future VLAN labels:
+
+- spine/admin
+- assistant/model
+- edge devices
+- machines
+- guest or class tablets
+
+Do not create VLANs as decoration.
+Create them only when there is a real trust boundary or recovery reason.
+
+## Good patterns
+
+- browser on the LAN opening the R900 cockpit
+- educator laptop using Headscale to reach Jetson-A privately
+- R900 mirroring docs for recovery
+- Jetson-B or Jetson-C polling room status
+- Digital Factory opened directly in the browser

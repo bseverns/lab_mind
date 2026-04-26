@@ -1,25 +1,26 @@
-# Intern One-Pager: Lab Brain
+# Intern One-Pager: Lab Mind
 
 ## What this system is
 
-Three small computers help the lab run:
+The lab has a stable spine and replaceable edge devices:
 
-- Jetson-A: assistant and main dashboard
-- Jetson-B: watches service status
-- Jetson-C: backup docs and recovery notes
+- R900: backups, storage, monitoring, dashboards, docs mirror, archive
+- Jetson-A: assistant and model node
+- Jetson-B and Jetson-C: edge support nodes
+- Pis: kiosks, bridges, signage, sensors
 
 ## Start here
 
 Open the cockpit:
 
 ```text
-http://labbrain-a.local
+http://r900.local
 ```
 
-If that does not work, open the docs fallback:
+If you need the assistant, open:
 
 ```text
-http://labbrain-c.local
+http://jetson-a.local:3000
 ```
 
 ## Do not guess
@@ -36,18 +37,27 @@ Write down what is missing instead.
 
 ## First checks
 
-- [ ] Jetson-A powers on
+- [ ] R900 powers on
 - [ ] browser opens cockpit
 - [ ] Open WebUI opens
 - [ ] Digital Factory opens
-- [ ] expected printer count appears
-- [ ] docs fallback opens
+- [ ] inventory template matches reality
+- [ ] docs mirror opens
+- [ ] operator toggle checklist is nearby if code mode needs to change
 
-Expected printers:
+## Code mode switch
 
-- 3 Sketch
-- 2 Sketch+
-- 1 Method X
+Use the operator toggle checklist for the code assistant:
+
+- [`handoff/OPERATOR_TOGGLE_CHECKLIST.md`](OPERATOR_TOGGLE_CHECKLIST.md)
+
+Use the model switch card for Jetson-A profile choices:
+
+- [`handoff/MODEL_SWITCH_CARD.md`](MODEL_SWITCH_CARD.md)
+
+Use the model choice ladder if you need the short version:
+
+- [`handoff/MODEL_CHOICE_LADDER.md`](MODEL_CHOICE_LADDER.md)
 
 ## If stuck
 

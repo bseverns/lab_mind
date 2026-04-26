@@ -1,15 +1,16 @@
-# 20 — Model Evaluation Protocol
+# 20 - Model Evaluation Protocol
 
 ## Purpose
 
-Find the biggest model that is still useful during actual operations.
+Find the model that is still useful during actual operations.
+Better to have a smaller model that answers quickly than a larger one that makes the room wait.
 
 ## Test environment
 
 Record:
 
 - Jetson-A power mode
-- temperature/throttling state
+- temperature or throttling state
 - model tag
 - quantization
 - context setting
@@ -18,6 +19,7 @@ Record:
 - time to first token if visible
 - total response time
 - usefulness score
+- local backend URL
 
 Use:
 
@@ -27,7 +29,7 @@ Use:
 
 ### Prompt 1: Bash safety
 
-> Write a bash script that checks whether `/srv/docker` is mounted, Docker is running, and Open WebUI responds. Make it safe for a beginner to run.
+> Write a bash script that checks whether the storage is mounted, Docker is running, and Open WebUI responds. Make it safe for a beginner to run.
 
 ### Prompt 2: Compose review
 
@@ -50,7 +52,7 @@ Use:
 | Score | Meaning |
 |---:|---|
 | 1 | unusable |
-| 2 | sometimes useful, too risky/slow |
+| 2 | sometimes useful, too risky or slow |
 | 3 | usable with supervision |
 | 4 | strong everyday helper |
 | 5 | excellent for this lab |
@@ -65,3 +67,13 @@ Choose the model with the best combined score across:
 - uncertainty handling
 - doc usefulness
 - local hardware stability
+
+## Fit record
+
+For each test, record:
+
+- backend URL
+- model family
+- quantization
+- fit result
+- whether the assistant still feels usable in a browser

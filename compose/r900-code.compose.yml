@@ -1,0 +1,21 @@
+# Optional R900-backed code assistant backend.
+# Use this when you want a slower but larger code model on the server spine.
+#
+# Suggested command:
+#   docker compose -f compose/r900-code.compose.yml up -d
+
+services:
+  llamacpp:
+    image: ghcr.io/ggml-org/llama.cpp:server
+    restart: unless-stopped
+    ports:
+      - "8081:8080"
+    environment:
+      - LLAMA_ARG_MODEL=/srv/labbrain/models/remote-code/EDIT_ME-qwen2.5-coder-7b-instruct.gguf
+      - LLAMA_ARG_CTX_SIZE=4096
+      - LLAMA_ARG_N_GPU_LAYERS=0
+      - LLAMA_ARG_HOST=0.0.0.0
+      - LLAMA_ARG_PORT=8080
+    volumes:
+      - /srv/labbrain/models:/srv/labbrain/models
+      - /srv/labbrain/data/llamacpp:/root/.cache

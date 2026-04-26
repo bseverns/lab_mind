@@ -1,6 +1,4 @@
-# 14 — Known-Good State
-
-## Purpose
+# 14 - Known-Good State
 
 A known-good-state snapshot lets the operator answer:
 
@@ -10,26 +8,26 @@ A known-good-state snapshot lets the operator answer:
 
 - a successful blank-card rebuild
 - a working class day
-- adding/removing a service
+- adding or removing a service
 - changing Headscale enrollment
 - changing model tags
 - changing printer fleet names
 
 ## Capture items
 
-- date/time
+- date and time
 - operator
 - hostnames
-- IPs/tailnet names
+- IPs and tailnet names
 - Docker versions
 - running containers
 - model list
 - disk layout
-- mounted NVMe confirmation
+- storage mount confirmation
 - dashboard URLs
 - Digital Factory visible fleet count
 - CNC connection status, if enabled
-- docs version/hash if available
+- docs version or hash if available
 
 Use:
 
@@ -40,8 +38,8 @@ Use:
 
 Store snapshots on:
 
-- Jetson-A local disk
-- Jetson-C archive
-- optionally another secure backup location
+- the R900 archive
+- a mirrored copy if one is later approved
 
+Do not make Jetson-C the only archive anymore.
 Do not include secrets.

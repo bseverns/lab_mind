@@ -1,10 +1,10 @@
-# 21 — Backup and Restore
+# 21 - Backup and Restore
 
 ## What to back up
 
 Back up:
 
-- lab-brain repo docs
+- lab docs
 - dashboard files
 - Compose files
 - `.env.example` files
@@ -25,17 +25,17 @@ Do not casually back up:
 
 Minimum:
 
-- Jetson-A local NVMe
-- Jetson-C archive copy
+- R900 storage
+- Jetson-A working copy
 
 Better:
 
-- plus off-device secure backup
+- plus one off-device secure backup
 
 ## Restore priority
 
-1. Docs and checklists
-2. Docker/Compose service definitions
+1. docs and checklists
+2. service definitions
 3. service volumes
 4. model files, if not easily re-pulled
 5. known-good-state archive
@@ -45,7 +45,7 @@ Better:
 Monthly:
 
 1. Pretend Jetson-A is blank.
-2. Use Jetson-C docs to recover the service map.
+2. Use the R900 docs mirror to recover the service map.
 3. Restore cockpit docs.
 4. Recreate containers from Compose.
 5. Confirm Open WebUI works.

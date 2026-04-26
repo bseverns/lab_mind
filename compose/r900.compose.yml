@@ -1,0 +1,28 @@
+# Canonical R900 spine example.
+# Keep this as the home for durable room services.
+
+services:
+  portainer:
+    image: portainer/portainer-ce:latest
+    restart: unless-stopped
+    ports:
+      - "9443:9443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /srv/labbrain/data/portainer:/data
+
+  nodered:
+    image: nodered/node-red:latest
+    restart: unless-stopped
+    ports:
+      - "1880:1880"
+    volumes:
+      - /srv/labbrain/data/nodered:/data
+
+  docs:
+    image: caddy:2
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - /srv/labbrain/docs:/usr/share/caddy:ro

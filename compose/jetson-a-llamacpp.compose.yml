@@ -1,0 +1,43 @@
+# Jetson-A local model stack example.
+# Keep this as a template for a local Open WebUI + llama.cpp setup.
+#
+# Notes:
+# - The 250 GB SSD can hold model files and cache.
+# - Pick one or two models that fit comfortably; do not try to mirror the cloud.
+# - Replace EDIT_ME values with tested paths and sizes.
+
+services:
+  llamacpp:
+    image: ghcr.io/ggml-org/llama.cpp:server
+    restart: unless-stopped
+    ports:
+      - "8081:8080"
+    environment:
+      - LLAMA_ARG_MODEL=/models/EDIT_ME-model.gguf
+      - LLAMA_ARG_CTX_SIZE=EDIT_ME
+      - LLAMA_ARG_N_GPU_LAYERS=EDIT_ME
+      - LLAMA_ARG_HOST=0.0.0.0
+      - LLAMA_ARG_PORT=8080
+    volumes:
+      - /srv/labbrain/models:/models
+      - /srv/labbrain/data/llamacpp:/root/.cache
+
+  openwebui:
+    image: ghcr.io/open-webui/open-webui:main
+    restart: unless-stopped
+    ports:
+      - "3000:8080"
+    environment:
+      - OPENAI_API_BASE_URL=http://llamacpp:8080/v1
+      - OPENAI_API_KEY=none
+      - WEBUI_SECRET_KEY=EDIT_ME
+    volumes:
+      - /srv/labbrain/data/openwebui:/app/backend/data
+
+  cockpit:
+    image: caddy:2
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ../dashboard:/usr/share/caddy:ro

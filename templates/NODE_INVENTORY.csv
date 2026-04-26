@@ -1,4 +1,7 @@
-node,hostname,role,ip_lan,tailnet_name,storage,location,notes
-Jetson-A,labbrain-a,main assistant/model host,,,,,
-Jetson-B,labbrain-b,ops sentinel,,,,,
-Jetson-C,labbrain-c,docs recovery node,,,,,
+node,hostname,role,class,ip_lan,tailnet_name,storage,location,notes
+R900,r900,infrastructure spine,server,,,,,backups/shared storage/monitoring/docs mirror
+Jetson-A,jetson-a,live assistant node,edge compute,,,,,Open WebUI and local model serving
+Jetson-B,jetson-b,edge support node,edge compute,,,,,room status and machine-adjacent helpers
+Jetson-C,jetson-c,edge support node,edge compute,,,,,local dashboards and service polling
+Pi-01,pi-01,disposable edge appliance,raspberry pi,,,,,kiosk/display placeholder
+Pi-02,pi-02,disposable edge appliance,raspberry pi,,,,,USB bridge placeholder

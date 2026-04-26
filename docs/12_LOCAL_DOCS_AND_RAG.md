@@ -1,57 +1,46 @@
-# 12 — Local Docs and RAG
-
-## Purpose
+# 12 - Local Docs and RAG
 
 The assistant becomes useful when it knows the room.
+Jetson-A should read the docs mirror, not the public internet, for most operational questions.
 
-The local docs collection should include:
+## What belongs in the local collection
 
-- lab-brain docs
-- printer setup/checklists
-- Cubiko workflow
+- the lab docs
+- printer setup and checklists
+- Cubiko workflow notes
 - Digital Factory notes
 - Headscale placeholder values without secrets
 - known-good-state snapshots
 - incident summaries
-- classHub docs, if relevant to local support
 - selected scripts and Compose files
 
-## RAG rule
-
-Do not ingest secrets.
-
-Prefer:
-
-- `.env.example`
-- redacted configs
-- READMEs
-- checklists
-- markdown notes
-- incident summaries
-
-Avoid:
+## What does not belong in the local collection
 
 - API keys
 - preauth keys
 - raw student data
 - private staff notes
 - cloud credentials
+- anything that would make the archive hard to share or recover safely
 
-## Collection names
-
-Suggested Open WebUI collections:
+## Suggested collections
 
 | Collection | Contents |
 |---|---|
-| `lab-brain-ops` | these docs and checklists |
+| `lab-ops` | these docs and checklists |
 | `manufacturing-systems` | printers, Digital Factory, CNC |
-| `classhub-reference` | classHub public/operator docs, if used |
 | `known-good-states` | redacted snapshots and system state notes |
 | `incidents` | incident summaries, not raw secrets |
+| `model-notes` | tested model settings and prompt notes |
 
 ## Update cadence
 
-- update docs collection after major doc changes
+- update the collection after major doc changes
 - summarize incidents before ingestion
-- re-index known-good-state after successful rebuilds
+- re-index known-good-state after a successful rebuild
 - delete stale docs rather than letting the model learn ghosts
+
+## Boundary
+
+R900 is the best home for the docs mirror and archive.
+Jetson-A is the best home for the interactive retrieval experience.

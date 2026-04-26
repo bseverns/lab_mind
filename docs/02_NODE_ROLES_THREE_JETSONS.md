@@ -1,65 +1,71 @@
-# 02 — Node Roles: Three Jetsons
+# 02 - Node Roles: Three Jetsons
 
-## Core idea
+The file name is historical.
+The architecture is current.
 
-Jetson-A thinks. Jetson-B watches. Jetson-C remembers.
+The old mental model gave Jetson-A the thinking role and split the support work across the two Nanos.
+That is still useful, but the memory role now lives on the R900.
 
-Do not treat the two old Nanos as a distributed GPU cluster. They are too small and too slow to make that worth the operator cost. They are still useful, but their usefulness is operational.
+## Current role map
 
-## Jetson-A: main assistant
+| Node | Main job | Secondary job | Not for |
+|---|---|---|---|
+| R900 | spine services | archive and recovery memory | large-model inference by default |
+| Jetson-A | live assistant node | private educator access | public app hosting |
+| Jetson-B | edge support node | room status and polling | heavy compute or archival duty |
+| Jetson-C | edge support node | local dashboards and helper tasks | heavy compute or archival duty |
+| Pi nodes | disposable edge appliances | kiosks, bridges, signage, sensors | central services |
 
-Jetson-A gets the heaviest, most interactive work:
+## What the spine owns
 
-- local LLM server
-- Open WebUI
-- code-assistant model
-- Portainer
-- primary cockpit page
-- optional CNCjs if physically attached to Cubiko
-- RAG/index serving
-- known-good-state capture
+The R900 is the durable layer:
 
-## Jetson-B: ops sentinel
-
-Jetson-B watches the room:
-
-- Node-RED flows
-- scheduled health checks
-- Digital Factory polling helper, if implemented
-- uptime checks
-- notifications
-- MQTT broker, if used
-- simple status dashboard
-
-## Jetson-C: docs and recovery
-
-Jetson-C keeps the room from losing its map:
-
-- static docs site
-- Syncthing node
-- backups and snapshots
+- backups
+- shared storage
+- monitoring
+- dashboards
+- Portainer server
+- Node-RED and/or MQTT if needed
+- docs mirror or static internal site
 - known-good-state archive
-- incident logs mirror
-- rebuild instructions
-- emergency landing page for tablet use
+- internal operational memory
 
-## Service placement matrix
+## What Jetson-A owns
 
-| Service | Jetson-A | Jetson-B | Jetson-C | Notes |
-|---|---:|---:|---:|---|
-| Ollama / llama.cpp | yes | no | no | A only |
-| Open WebUI | yes | no | maybe mirror link | A is canonical |
-| Portainer | yes | optional agent | optional agent | keep simple |
-| Node-RED | optional | yes | optional | B is best home |
-| Static docs | yes | optional | yes | C should survive A rebuild |
-| Syncthing | yes | maybe | yes | C is archive anchor |
-| CNCjs | maybe | maybe | no | whichever is physically near Cubiko |
-| Digital Factory browser/API helper | yes | yes | no | B can poll; A can display |
-| MQTT broker | maybe | yes | no | only if needed |
-| Backups | yes | maybe | yes | C stores copies |
+Jetson-A is the only node that should feel like an assistant:
 
-## Do not run everywhere
+- Open WebUI
+- local model serving
+- code-assistant workflows
+- local docs and RAG
+- browser-first educator access
+- optional CNCjs if physically appropriate
 
-Do not install every service on every board. Duplication feels safe until it becomes drift.
+## What Jetson-B and Jetson-C own
 
-One canonical home per service. Optional mirrors only when the mirror has a clear recovery purpose.
+The Jetson Nanos are support nodes:
+
+- room status
+- service polling
+- local dashboards
+- machine-adjacent helper roles
+
+They should not be expected to carry large models, long-lived archives, or the main operator experience.
+
+## What Pis own
+
+The Pi fleet exists so the room can have tiny replaceable devices:
+
+- kiosk screens
+- simple signage
+- USB bridges
+- machine sensors
+- cameras
+
+Replace them without changing the architecture.
+
+## Rule of thumb
+
+- If the job is about storing or restoring the room, put it on the R900.
+- If the job is about assisting a person, put it on Jetson-A.
+- If the job is about watching the edges, put it on the Nanos or Pis.

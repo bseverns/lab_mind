@@ -1,5 +1,5 @@
 [Unit]
-Description=Run Lab Brain status check every five minutes
+Description=Run Lab Mind status check every five minutes
 
 [Timer]
 OnBootSec=2min

@@ -1,0 +1,19 @@
+# Model Values
+
+FAST_MODEL=EDIT_ME_small_fast_model
+HEAVY_MODEL=EDIT_ME_larger_code_model
+CODE_MODEL=EDIT_ME_quantized_code_model
+MODEL_SERVER=llama.cpp
+MODEL_HOST_NODE=jetson-a
+MODEL_STACK=compose/jetson-a-llamacpp.compose.yml
+MODEL_STORAGE=/srv/labbrain/models
+MODEL_SSD_HINT=250gb_attached_ssd
+MODEL_SERVER_URL=http://llamacpp:8080
+MODEL_SERVER_KIND=llamacpp
+
+FAST_MODE_CONTEXT=EDIT_ME
+FAST_MODE_MAX_TOKENS=EDIT_ME
+HEAVY_MODE_CONTEXT=EDIT_ME
+HEAVY_MODE_MAX_TOKENS=EDIT_ME
+
+MODEL_TEST_LOG=templates/MODEL_TEST_LOG.csv

@@ -1,12 +1,7 @@
-services:
-  nodered:
-    image: nodered/node-red:latest
-    restart: unless-stopped
-    ports:
-      - "1880:1880"
-    volumes:
-      - /srv/labbrain/data/nodered:/data
+# Legacy edge-support example.
+# Node-RED now belongs on the R900 if the lab uses it.
 
+services:
   status-page:
     image: caddy:2
     restart: unless-stopped

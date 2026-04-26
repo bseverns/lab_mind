@@ -1,0 +1,10 @@
+# Jetson-A overlay for a remote code backend.
+# Use this after the R900 code backend is running.
+#
+# Suggested command:
+#   docker compose -f compose/jetson-a-base.compose.yml -f compose/jetson-a-remote-code.compose.yml up -d
+
+services:
+  openwebui:
+    environment:
+      - OPENAI_API_BASE_URL=http://r900.local:8081/v1

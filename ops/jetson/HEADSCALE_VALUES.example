@@ -1,22 +1,26 @@
-# Headscale / Tailnet Values for Lab-Brain
-# Copy to a private file before filling secrets.
+# Legacy Headscale / Tailnet Values for Lab-Brain
+# Use ops/lab/headscale-values.example for current placeholders.
 
-HEADSCALE_SERVER_URL=https://hs.creatempls.org
-HEADSCALE_BASE_DOMAIN=tail.creatempls.org
-HEADSCALE_ENROLLMENT_METHOD=EDIT_ME_preauth_key_or_interactive
+HEADSCALE_SERVER_URL=EDIT_ME
+HEADSCALE_BASE_DOMAIN=EDIT_ME
+HEADSCALE_ENROLLMENT_METHOD=EDIT_ME
 HEADSCALE_PREAUTH_KEY=DO_NOT_COMMIT_REAL_KEY
 
-JETSON_A_HOSTNAME=labbrain-a
-JETSON_A_TAILNET_NAME=labbrain-a
-JETSON_A_TAGS=tag:ops,tag:model
+R900_HOSTNAME=r900
+R900_TAILNET_NAME=r900
+R900_TAGS=tag:spine,tag:storage,tag:docs
 
-JETSON_B_HOSTNAME=labbrain-b
-JETSON_B_TAILNET_NAME=labbrain-b
-JETSON_B_TAGS=tag:ops
+JETSON_A_HOSTNAME=jetson-a
+JETSON_A_TAILNET_NAME=jetson-a
+JETSON_A_TAGS=tag:assistant,tag:model
 
-JETSON_C_HOSTNAME=labbrain-c
-JETSON_C_TAILNET_NAME=labbrain-c
-JETSON_C_TAGS=tag:ops,tag:docs
+JETSON_B_HOSTNAME=jetson-b
+JETSON_B_TAILNET_NAME=jetson-b
+JETSON_B_TAGS=tag:edge,tag:room
+
+JETSON_C_HOSTNAME=jetson-c
+JETSON_C_TAILNET_NAME=jetson-c
+JETSON_C_TAGS=tag:edge,tag:machine
 
 EDUCATOR_DEVICE_POLICY=trusted_staff_only
 PUBLIC_PORT_FORWARDING_ALLOWED=0

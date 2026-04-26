@@ -1,53 +1,34 @@
-# 05 — Jetson-C Docs and Recovery
+# 05 - Jetson-C Recovery Notes
 
-## Purpose
+This file keeps the old Jetson-C filename alive for compatibility.
+The actual recovery memory now belongs on the R900.
 
-Jetson-C is the memory node.
+Jetson-C is therefore treated as an edge support node, not the archive.
 
-It should keep enough instructions available that someone can rebuild Jetson-A while Jetson-A is unavailable.
+## What Jetson-C can do
 
-## Required jobs
+- host a local dashboard
+- run service polling
+- act as a nearby helper for a machine or display
+- mirror a small operational view if needed
 
-- serve static docs
-- keep a synced copy of the lab-brain repo/docs
-- store known-good-state snapshots
-- store incident logs
-- store printable checklists
-- keep a copy of Headscale placeholder values without secrets
+## What Jetson-C should not do
 
-## Recommended services
+- be the primary docs home
+- hold the only copy of the archive
+- become a surprise model server
+- grow into a second assistant
 
-- Caddy or nginx for static docs
-- Syncthing
-- cron/systemd timers for snapshots
-- simple landing page
+## Where recovery now lives
 
-## Docs landing page
+Use these files instead of assuming Jetson-C is the memory node:
 
-The landing page should link to:
+- `docs/14_KNOWN_GOOD_STATE.md`
+- `docs/19_FAILURE_MODES_AND_RECOVERY.md`
+- `docs/21_BACKUP_AND_RESTORE.md`
+- `templates/KNOWN_GOOD_STATE.md`
+- `templates/INCIDENT_LOG.csv`
 
-- Intern one-pager
-- Blank-card rebuild
-- Jetson-A service map
-- Headscale values template
-- Digital Factory check
-- Cubiko checklist
-- Incident log template
-- Known-good-state archive
+## Recovery rule
 
-## Recovery promise
-
-Jetson-C does not need to be powerful. It needs to be there.
-
-If Jetson-A is blank, broken, or mid-rebuild, Jetson-C should still be able to answer:
-
-> What do we do next?
-
-## What not to store
-
-Do not store raw secrets here unless the machine is treated as a secured secrets host. Prefer:
-
-- placeholder files
-- `.env.example`
-- redacted snapshots
-- instructions for where secrets are kept
+If a beginner cannot understand the rebuild path from the R900 docs mirror, the recovery path is not clear enough.

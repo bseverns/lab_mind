@@ -8,14 +8,17 @@ status_path = root / "dashboard" / "status-example.json"
 status = {
     "generated_at": datetime.now(timezone.utc).isoformat(),
     "nodes": {
-        "labbrain-a": "unknown",
-        "labbrain-b": "unknown",
-        "labbrain-c": "unknown",
+        "r900": "unknown",
+        "jetson-a": "unknown",
+        "jetson-b": "unknown",
+        "jetson-c": "unknown",
     },
     "links": {
-        "Open WebUI": "http://labbrain-a.local:3000",
+        "R900 cockpit": "http://r900.local",
+        "Open WebUI": "http://jetson-a.local:3000",
         "Digital Factory": "https://digitalfactory.ultimaker.com/",
-        "Docs fallback": "http://labbrain-c.local",
+        "Docs mirror": "http://r900.local/docs",
+        "Portainer": "https://r900.local:9443",
     },
 }
 status_path.write_text(json.dumps(status, indent=2) + "\n")

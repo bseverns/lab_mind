@@ -1,10 +1,14 @@
-# Model Values
+# Legacy Model Values
+# Use ops/lab/model-values.example for current placeholders.
 
 FAST_MODEL=EDIT_ME_small_fast_model
-CODE_MODEL=EDIT_ME_quantized_6b_or_7b_code_model
-CODE_MODEL_CONTEXT=4096
-CODE_MODEL_MAX_TOKENS=768
-CODE_MODEL_TEMPERATURE=0.2
-MODEL_SERVER=ollama
-MODEL_HOST_NODE=labbrain-a
+HEAVY_MODEL=EDIT_ME_larger_code_model
+CODE_MODEL=EDIT_ME_quantized_code_model
+MODEL_SERVER=llama.cpp
+MODEL_HOST_NODE=jetson-a
+MODEL_STACK=compose/jetson-a-llamacpp.compose.yml
+MODEL_STORAGE=/srv/labbrain/models
+MODEL_SSD_HINT=250gb_attached_ssd
+MODEL_SERVER_URL=http://llamacpp:8080
+MODEL_SERVER_KIND=llamacpp
 MODEL_TEST_LOG=templates/MODEL_TEST_LOG.csv

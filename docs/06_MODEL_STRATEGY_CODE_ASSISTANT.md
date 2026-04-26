@@ -1,95 +1,162 @@
-# 06 — Model Strategy: Code Assistant
+# 06 - Model Strategy for the Code Assistant
 
-## Goal
+Jetson-A is the only node that should carry local model serving.
+The older Jetson Nanos are not model hosts for this architecture.
 
-Run the largest useful local code-assistant model on Jetson-A without making the room wait forever.
+The reason is practical, not romantic:
 
-## Practical ceiling
+- the Orin has the best chance of keeping the assistant responsive
+- the Nanos have too little headroom for large-model inference
+- distributed inference across tiny edge nodes creates failure modes that are harder to explain and harder to recover
 
-Jetson-A is the only reasonable model host. The older Jetson Nanos should not participate in distributed inference.
+## Feasible model classes on Jetson-A
 
-Target model class:
+Use placeholders until the final tested values are known.
 
-- 6B–7B code model
-- 4-bit quantized
-- conservative context window
-- small output budget by default
+| Mode | Typical size class | Purpose | Operational shape |
+|---|---|---|---|
+| fast model | small, low-latency | short answers, navigation, summaries, educator prompts | should feel quick |
+| code model | mid-size quantized | repo help, code edits, runbook guidance, structured explanations | slower but useful |
+| heavy model | larger quantized local model | deeper synthesis when the room can afford it | only if Jetson-A stays usable |
 
-## Recommended test order
+## Storage reality
 
-| Order | Model class | Why |
-|---:|---|---|
-| 1 | 3B–4B general instruct | fast daily helper |
-| 2 | Qwen2.5-Coder 7B quantized | first serious code model candidate |
-| 3 | DeepSeek-Coder 6.7B quantized | alternate code candidate |
-| 4 | CodeLlama 7B quantized | known baseline |
-| 5 | StarCoder2 7B quantized | alternate baseline |
+The attached 250 GB SSD gives Jetson-A room for model files, cache, and working data.
 
-Record real results in:
+Use that space for:
 
+- one fast model
+- one code model
+- optionally one heavier model if it still fits comfortably
+
+Do not treat the SSD as permission to mirror the cloud.
+It is a local assistant store, not a model zoo.
+
+## Fast-model mode
+
+Fast mode is the default when the operator wants the room to stay snappy.
+
+Use it for:
+
+- quick assistant replies
+- simple docs lookup
+- lightweight summarization
+- browser-first classroom help
+
+## Heavy-model mode
+
+Heavy mode is allowed only when the operator accepts the tradeoff.
+
+Use it for:
+
+- longer synthesis
+- code review assistance
+- multi-step reasoning where latency is acceptable
+
+Heavy mode should not make Jetson-A feel like it is pinned to the wall.
+
+## Why the Nanos are not for large models
+
+The Jetson Nanos are fine for:
+
+- room status
+- service polling
+- local dashboards
+- bridge tasks
+
+They are not good places for large models because:
+
+- memory is tight
+- storage is usually modest
+- thermal headroom is smaller
+- the architecture becomes harder to explain
+- a recovery path gets ugly very quickly
+
+## Better code results without breaking the architecture
+
+If the local 3B code model is not enough, the R900 can host a separate backend for a larger code model.
+
+That is allowed because it is a separate backend, not a distributed model.
+Jetson-A still stays the browser-facing assistant node.
+
+## Controlled cooperation for code workflows
+
+There is one narrow exception to the usual "keep each node simple" rule:
+
+- Jetson-A may route code-assistant requests to the R900 over the private network
+- the R900 may host the heavier code backend
+- Headscale may be used to carry that private path when the operator is off-site
+
+This is cooperation at the service boundary, not cooperation at the model boundary.
+
+Keep these rules in place:
+
+- do not split one model across machines
+- do not shard inference across the Nanos
+- do not make the R900 the browser front door
+- do not expose the backend publicly
+
+The benefit is practical: the code assistant can be slower and better when that is the right tradeoff, while the operator still sees one simple assistant entry point.
+
+Use the R900 option when:
+
+- better code reasoning matters more than speed
+- the R900 RAM gives you more room
+- you want to keep the assistant experience on Jetson-A but move the compute elsewhere
+
+See:
+
+- `docs/26_R900_REMOTE_CODE_BACKEND.md`
+- `docs/27_COOPERATIVE_CODE_MODE.md`
+- `compose/r900-code.compose.yml`
+- `compose/jetson-a-remote-code.compose.yml`
+
+## Operational split
+
+1. Keep the assistant model on Jetson-A.
+2. Keep the Nanos on support jobs.
+3. Keep the R900 as the archive and service spine.
+4. Edit placeholders until a model is actually tested.
+
+## Editing values
+
+Use:
+
+- `ops/lab/model-values.example`
+- `templates/MODEL_SHORTLIST.example.md`
+- `templates/MODEL_CANDIDATES.example.csv`
+- `templates/LOCAL_MODEL_STACK.example.yml`
 - `templates/MODEL_TEST_LOG.csv`
 
-## Two-gear policy
+If you want a local model stack template, start from:
 
-Use two model modes:
+- `compose/jetson-a-llamacpp.compose.yml`
 
-### Fast mode
-For:
+If you want to build the stack in pieces, use:
 
-- checklist questions
-- log summaries
-- “what do I check next?”
-- short bash commands
-- intern help
+- `compose/jetson-a-base.compose.yml`
+- `compose/jetson-a-fast.compose.yml`
+- `compose/jetson-a-code.compose.yml`
+- `compose/jetson-a-heavy.compose.yml`
+- `compose/r900-code.compose.yml`
+- `compose/jetson-a-remote-code.compose.yml`
 
-### Code mode
-For:
+Then follow:
 
-- script review
-- Docker Compose edits
-- Python/bash generation
-- explaining stack traces
-- writing setup automation
+- `docs/25_JETSON_A_MODEL_BUILD_PIECES.md`
+- `docs/26_R900_REMOTE_CODE_BACKEND.md`
+- `docs/27_COOPERATIVE_CODE_MODE.md`
 
-## Suggested defaults
+Do not write final claims into the docs until the model has been tested in the room.
 
-| Setting | Fast mode | Code mode |
-|---|---:|---:|
-| context | 2048–4096 | 4096–8192 if tolerable |
-| max output | 256–512 | 512–1024 |
-| temperature | 0.2–0.4 | 0.1–0.3 |
-| concurrency | 1 | 1 |
+## Signs the model is too big
 
-## Evaluation tasks
+- the cockpit feels sticky
+- browser interaction becomes laggy
+- thermal pressure rises
+- responses degrade enough that the assistant is no longer better than the docs mirror
 
-A model is useful only if it helps with real room work.
+## Rule
 
-Test prompts:
-
-1. Explain a Docker Compose error from a copied log.
-2. Write a bash check that verifies NVMe mount and Docker health.
-3. Summarize a Digital Factory missing-printer incident.
-4. Patch a Node-RED flow note into a safer checklist.
-5. Explain why not to expose Portainer publicly.
-6. Produce an intern-safe recovery sequence.
-
-## Pass/fail
-
-Pass means:
-
-- answers within an acceptable time
-- does not invent device details
-- asks for exact error text when needed
-- keeps safety boundaries clear
-- produces commands a human can inspect
-
-Fail means:
-
-- too slow to be used during class
-- hallucinates local hostnames or secrets
-- gives unsafe CNC or network advice
-- outputs giant command blobs with no explanation
-
-## Important note
-
-The most useful model may not be the largest one. A slightly smaller model that responds quickly may beat a larger model that feels like it is composing scripture under a blanket.
+If the model is too slow, shrink the model.
+Do not compensate by spreading inference around the room.

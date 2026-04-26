@@ -1,5 +1,5 @@
 [Unit]
-Description=Capture Lab Brain known-good state snapshot
+Description=Capture Lab Mind known-good state snapshot
 Wants=network-online.target
 After=network-online.target docker.service
 

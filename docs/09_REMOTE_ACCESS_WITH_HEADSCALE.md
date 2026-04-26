@@ -1,31 +1,35 @@
-# 09 — Remote Access with Headscale
+# 09 - Remote Access with Headscale
 
-## Purpose
+Remote access exists to reach private lab services without exposing them to the public internet.
 
-Remote access lets trusted educators and operators reach Jetson-A without being physically in the lab.
+Headscale is the control plane. It is not the app surface.
 
-The remote path should be private and narrow.
+## What Headscale is for
 
-## What Headscale does
+- trusted device enrollment
+- private reachability to the R900, Jetson-A, and the edge nodes
+- narrow, authenticated remote admin access
+- carrying one narrow private code-assistant path between Jetson-A and the R900 when that is the chosen deployment
 
-Headscale coordinates tailnet membership. It is the control plane. It is not:
+## What Headscale is not for
 
-- the model server
 - the public dashboard
+- the model server
 - the CNC controller
-- a general office VPN
-- a substitute for local safety
+- a general office VPN by default
+- a replacement for local safety or local wiring
+- a reason to make every service reachable everywhere
 
 ## Editable details
 
-Do not finalize this doc until the VPS is real.
+Do not finalize these values until the control plane is real.
 
 Use:
 
+- `ops/lab/headscale-values.example`
 - `templates/HEADSCALE_VALUES.example`
-- `ops/jetson/HEADSCALE_VALUES.example`
 
-Keep values editable for:
+Keep placeholders for:
 
 - Headscale server URL
 - tailnet base domain
@@ -39,6 +43,7 @@ Keep values editable for:
 Default remote membership:
 
 - Jetson-A
+- R900
 - trusted educator laptop(s)
 - operator machine
 
@@ -51,19 +56,19 @@ Avoid:
 
 - student devices
 - all classroom machines
-- general office devices
+- general office devices unless there is a documented reason
 
 ## Success checks
 
-Remote access works when:
+Remote access is working when:
 
-1. Jetson-A appears in Headscale node list.
-2. An educator laptop can reach Jetson-A over private network.
-3. Open WebUI opens privately.
-4. Portainer opens privately.
-5. Docs open privately.
-6. No public port forwarding is required.
+1. the expected nodes appear in the Headscale node list
+2. an educator laptop can reach Jetson-A privately
+3. the R900 docs mirror opens privately
+4. Portainer opens privately
+5. no public port forwarding is required for the lab tools
 
 ## Operator note
 
-When unsure, leave remote access narrower. It is easier to widen a careful boundary than to clean up a sloppy one.
+When unsure, keep remote access narrower.
+It is easier to widen a careful boundary than to clean up a sloppy one.

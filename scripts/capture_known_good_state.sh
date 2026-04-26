@@ -24,8 +24,13 @@ mkdir -p "$OUT_DIR"
   docker compose version || true
   docker ps || true
   echo
-  echo "## Ollama models"
-  curl -fsS http://127.0.0.1:11434/api/tags || true
+  echo "## Local model server"
+  MODEL_SERVER_URL="${MODEL_SERVER_URL:-${OLLAMA_URL:-http://127.0.0.1:8081}}"
+  if curl -fsS "$MODEL_SERVER_URL/api/tags" >/dev/null 2>&1; then
+    curl -fsS "$MODEL_SERVER_URL/api/tags" || true
+  else
+    curl -fsS "$MODEL_SERVER_URL/v1/models" || true
+  fi
   echo
   echo "## Notes"
   echo "Add human notes here. Do not paste secrets."

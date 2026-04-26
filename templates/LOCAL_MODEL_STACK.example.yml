@@ -1,0 +1,32 @@
+# Local model stack template
+# Use this as a starting point for Jetson-A.
+#
+# The 250 GB SSD is for model files, caches, and local data.
+# The stack should stay boring: one serving backend, one web UI, one cockpit page.
+
+stack_name: jetson-a-local-model
+host_node: jetson-a
+storage_root: /srv/labbrain
+ssd_mount: EDIT_ME_250gb_ssd_mount_point
+model_storage: /srv/labbrain/models
+
+model_family: EDIT_ME_open_weight_family
+model_variant: EDIT_ME_quantized_variant
+model_file: EDIT_ME-model.gguf
+candidate_log: templates/MODEL_CANDIDATES.example.csv
+
+serve_backend: llama.cpp
+serve_port: 8080
+openwebui_port: 3000
+cockpit_port: 80
+openwebui_provider_url: http://llamacpp:8080/v1
+openwebui_provider_api_key: none
+
+context_size: EDIT_ME
+gpu_layers: EDIT_ME
+max_tokens: EDIT_ME
+
+notes:
+  - "Use one model that comfortably fits on the SSD and in memory."
+  - "Do not rely on distributed inference across the Nanos."
+  - "Keep the assistant responsive for browser-first use."

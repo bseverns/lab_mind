@@ -2,16 +2,19 @@
   "generated_at": "EDIT_ME",
   "overall": "unknown",
   "nodes": {
-    "labbrain-a": "unknown",
-    "labbrain-b": "unknown",
-    "labbrain-c": "unknown"
+    "r900": "unknown",
+    "jetson-a": "unknown",
+    "jetson-b": "unknown",
+    "jetson-c": "unknown"
   },
   "services": {
+    "docs_mirror": "unknown",
+    "backups": "unknown",
     "openwebui": "unknown",
-    "ollama": "unknown",
+    "model_server": "unknown",
     "portainer": "unknown",
+    "monitoring": "unknown",
     "nodered": "unknown",
-    "docs": "unknown",
     "digital_factory": "manual_check_required",
     "cncjs": "optional"
   }

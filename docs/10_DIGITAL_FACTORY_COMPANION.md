@@ -1,20 +1,18 @@
-# 10 — Digital Factory Companion
+# 10 - Digital Factory Companion
 
-## Purpose
-
-Digital Factory remains the source of truth for MakerBot/UltiMaker printer management.
-
-The lab-brain does not replace it. It helps humans remember what should be there.
+Digital Factory remains the source of truth for the printer fleet.
+The lab should help humans remember what should be there, not replace the cloud system.
 
 ## Expected fleet
 
-Update this if the room changes.
+Do not invent final printer values in the repo.
+Use the inventory templates and fill the real machine list when it is known.
 
-| Machine type | Count | Notes |
-|---|---:|---|
-| MakerBot Sketch | 3 | Digital Factory managed |
-| MakerBot Sketch+ | 2 | Digital Factory managed |
-| UltiMaker/MakerBot Method X | 1 | Digital Factory managed |
+Suggested templates:
+
+- `templates/PRINTER_INVENTORY.csv`
+- `templates/DIGITAL_FACTORY_WORKSPACE.example.md`
+- `templates/DIGITAL_FACTORY_CHECK.md`
 
 ## First check
 
@@ -25,14 +23,13 @@ Open Digital Factory and confirm:
 - all expected printers visible
 - printer names make sense
 - no mystery duplicate machines
-- webcam/snapshot view available where supported
-- queue/status information visible
+- queue or status information visible
 
-## Lab-brain companion tasks
+## Browser-first companion tasks
 
 Jetson-A can display the bookmark and checklist.
-Jetson-B can eventually poll APIs or run status checks if credentials/API approach is finalized.
-Jetson-C can archive checklists and incident notes.
+The R900 can keep the archive copy of those notes.
+Edge nodes can display room-side status if that helps, but they are not the source of truth.
 
 ## Missing printer flow
 
@@ -44,7 +41,6 @@ Jetson-C can archive checklists and incident notes.
 6. Restart only the affected printer if appropriate.
 7. Record what fixed it.
 
-Use:
+## Rule
 
-- `templates/DIGITAL_FACTORY_CHECK.md`
-- `templates/INCIDENT_LOG.csv`
+If the printer fleet count is not yet real, leave it as a placeholder.

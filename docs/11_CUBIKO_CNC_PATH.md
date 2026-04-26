@@ -1,10 +1,7 @@
-# 11 — Cubiko CNC Path
+# 11 - Cubiko CNC Path
 
-## Purpose
-
-The Cubiko may be connected to Jetson-A or another nearby node through USB and controlled with CNCjs.
-
-The controlling node should be physically close to the CNC.
+Cubiko or any CNC path is optional.
+If it exists, it must remain physically local, clearly documented, and easy to disable.
 
 ## Safety boundary
 
@@ -12,7 +9,7 @@ The dashboard is not safety.
 CNCjs is not supervision.
 A checklist is not judgment.
 
-The system may remind; humans decide.
+Only humans decide whether a job can run.
 
 ## Before enabling CNCjs
 
@@ -21,11 +18,18 @@ Confirm:
 - physical placement
 - USB stability
 - power path
-- emergency stop / stop procedure
+- emergency stop and stop procedure
 - dust and debris control
 - adult supervision policy
 - material hold-down method
 - who is allowed to send jobs
+
+## Where it can live
+
+Put CNCjs only on a node that is physically appropriate for the machine.
+That may be Jetson-A if the machine is nearby, or a nearby Pi if the controller path is simple.
+
+Never assume the R900 should control the CNC by default.
 
 ## Pre-job checklist
 

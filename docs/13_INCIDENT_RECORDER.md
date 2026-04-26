@@ -1,9 +1,6 @@
-# 13 — Incident Recorder
+# 13 - Incident Recorder
 
-## Purpose
-
-The lab-brain should turn problems into future knowledge.
-
+The lab should turn problems into future knowledge.
 Every weird failure is a small unpaid teacher. Capture the lesson.
 
 ## Minimum incident fields
@@ -15,11 +12,12 @@ Fields:
 - date
 - time
 - reporter
+- level
 - node or machine
 - what they were trying to do
 - what happened
 - exact error text
-- screenshot/photo path
+- screenshot or photo path
 - what was tried
 - result
 - follow-up needed
@@ -30,8 +28,16 @@ Fields:
 |---|---|
 | Note | interesting but harmless |
 | Degraded | class can continue with workaround |
-| Blocking | class/work cannot continue |
+| Blocking | class or work cannot continue |
 | Safety | physical or data safety concern |
+
+## Good incident behavior
+
+- write the exact error text
+- capture the photo or screenshot path
+- say what changed before the failure
+- say what fixed it, if anything
+- say whether the fix should become a doc update
 
 ## Assistant use
 

@@ -1,67 +1,42 @@
-# 04 — Jetson-B Ops Sentinel
+# 04 - Jetson Nano Edge Support Nodes
 
-## Purpose
+Jetson-B and Jetson-C are the support Nanos.
+They should be treated as replaceable edge appliances, not miniature servers with heroic expectations.
 
-Jetson-B is the watchful node. It does not need to be clever. It needs to be persistent.
+## What they watch
 
-It answers:
+- whether the room is up
+- whether the main services are responding
+- whether a machine-adjacent helper is behaving
+- whether the current dashboard still reflects reality
 
-- Is Jetson-A alive?
-- Are the key services responding?
-- Is Digital Factory reachable?
-- Is the docs node reachable?
-- Is the CNC dashboard reachable, if enabled?
-- Is the class-day cockpit green/yellow/red?
+## What belongs on these nodes
 
-## Recommended services
+- room status panels
+- lightweight service polling
+- local dashboards
+- machine-adjacent helper roles
+- simple sensor or bridge tasks
 
-- Node-RED
-- lightweight status scripts
-- optional MQTT broker
-- optional simple static dashboard
-- optional Uptime Kuma or similar if you decide the overhead is worth it
+If a task needs long retention, heavy storage, or a serious model, it does not belong here.
 
-## Minimal checks
+## What does not belong here
 
-Run every few minutes:
+- the main assistant
+- the known-good archive
+- the docs mirror
+- the primary model server
+- central automation if the R900 can host it more cleanly
 
-```bash
-ping -c 1 labbrain-a.local
-curl -fsS http://labbrain-a.local || true
-curl -fsS http://labbrain-a.local:3000 || true
-curl -kfsS https://labbrain-a.local:9443 || true
-curl -fsS http://labbrain-c.local || true
-```
+## Good output
 
-## Status categories
+The Nanos should help answer:
 
-| Color | Meaning | Action |
-|---|---|---|
-| Green | ready for class | proceed |
-| Yellow | degraded but usable | record and continue carefully |
-| Red | not ready | stop and fix basics |
+- Is the room alive?
+- Which machine needs attention?
+- Is the browser cockpit still pointing at valid services?
+- Is the printer or CNC side behaving as expected?
 
-## What Jetson-B should not do
+## Practical rule
 
-- run the main code model
-- become the only dashboard
-- store the only copy of docs
-- control the CNC unless it is physically placed beside the CNC
-
-## Output
-
-Jetson-B should publish a simple status summary to:
-
-- a local JSON file
-- a dashboard card
-- optional Node-RED UI
-- optional MQTT topic
-
-Example topic names:
-
-```text
-labbrain/status/jetson-a
-labbrain/status/digital-factory
-labbrain/status/cubiko
-labbrain/status/docs
-```
+If the node would be annoying to rebuild from scratch, the job is probably too important for a Nano.
