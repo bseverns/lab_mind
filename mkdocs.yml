@@ -50,11 +50,11 @@ nav:
       - Model Switch Card: handoff/MODEL_SWITCH_CARD.md
       - Blank Card Rebuild: handoff/BLANK_CARD_REBUILD.md
       - Printable Quickstart: handoff/PRINTABLE_QUICKSTART.md
-not_in_nav:
-  - README.md
-  - CHANGELOG.md
-  - SOURCE_NOTES.md
-  - docs/index.md
-  - checklists/*.md
-  - ops/**/*.md
-  - templates/*.md
+not_in_nav: |
+  README.md
+  CHANGELOG.md
+  SOURCE_NOTES.md
+  docs/index.md
+  checklists/*.md
+  ops/**/*.md
+  templates/*.md
