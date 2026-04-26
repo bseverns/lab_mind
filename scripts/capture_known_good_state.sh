@@ -25,11 +25,15 @@ mkdir -p "$OUT_DIR"
   docker ps || true
   echo
   echo "## Local model server"
-  MODEL_SERVER_URL="${MODEL_SERVER_URL:-${OLLAMA_URL:-http://127.0.0.1:8081}}"
-  if curl -fsS "$MODEL_SERVER_URL/api/tags" >/dev/null 2>&1; then
-    curl -fsS "$MODEL_SERVER_URL/api/tags" || true
+  MODEL_SERVER_URL="${MODEL_SERVER_URL:-${OLLAMA_URL:-}}"
+  if [[ -n "$MODEL_SERVER_URL" ]]; then
+    if curl -fsS "$MODEL_SERVER_URL/api/tags" >/dev/null 2>&1; then
+      curl -fsS "$MODEL_SERVER_URL/api/tags" || true
+    else
+      curl -fsS "$MODEL_SERVER_URL/v1/models" || true
+    fi
   else
-    curl -fsS "$MODEL_SERVER_URL/v1/models" || true
+    echo "MODEL_SERVER_URL not set; skipping model probe"
   fi
   echo
   echo "## Notes"

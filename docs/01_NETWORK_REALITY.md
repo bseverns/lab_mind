@@ -46,6 +46,8 @@ Keep names short, predictable, and role-based:
 | optional machine bridge | `printer-*` or `cnc-*` | `printer-bridge-01` |
 
 Do not invent alternate names for the same box.
+Use `*.lab.internal` or the documented Headscale name as the canonical private layer.
+Treat `.local` as a convenience layer only.
 
 ## Private versus public traffic
 

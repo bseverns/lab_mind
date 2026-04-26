@@ -1,0 +1,18 @@
+# Image Values
+
+Use these as editable placeholders that match docs/IMAGE_VERSIONS.md.
+
+OPEN_WEBUI_IMAGE=ghcr.io/open-webui/open-webui:git-f2a360c-cuda
+OPEN_WEBUI_IMAGE_DIGEST=sha256:fbcc95aa89c372c0ba536aa3298a037b95f7b2e1cb5549849667817f8661fa1c
+
+LLAMACPP_LOCAL_IMAGE=ghcr.io/ggml-org/llama.cpp:server-cuda12-b8840
+LLAMACPP_LOCAL_IMAGE_DIGEST=sha256:a92a756344dffd35e93a693f771113c0ec7753701d83bab5a65ec8aae325491c
+
+LLAMACPP_REMOTE_IMAGE=ghcr.io/ggml-org/llama.cpp:server-b8840
+LLAMACPP_REMOTE_IMAGE_DIGEST=sha256:99d2554c4c8d5339649dde530056cf10771823d7cd983dbd0441da9c419976b1
+
+PORTAINER_IMAGE=portainer/portainer-ce:2.39.0
+NODERED_IMAGE=nodered/node-red:4.1.8
+CADDY_IMAGE=caddy:2.11.2-alpine
+SYNCTHING_IMAGE=syncthing/syncthing:2.0.16
+CNCJS_IMAGE=cncjs/cncjs:v1.11.0

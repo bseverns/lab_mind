@@ -16,6 +16,13 @@ The current intended topology is:
 The point is not to create a cluster.
 The point is to keep the room legible, recoverable, and boring enough to survive rebuilds.
 
+Before you change anything, read the state layers:
+
+- `docs/CURRENT_STATE.md`
+- `docs/TESTED_VALUES.md`
+- `docs/KNOWN_GOOD_STATE.md`
+- `docs/EXPERIMENTAL_SURFACES.md`
+
 ```mermaid
 flowchart LR
   Internet[Public internet]

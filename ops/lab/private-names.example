@@ -1,0 +1,20 @@
+# Private Names
+
+Friendly LAN names are fine for sketches.
+Canonical private names should be the editable source of truth.
+
+R900_PRIVATE_NAME=r900.lab.internal
+JETSON_A_PRIVATE_NAME=jetson-a.lab.internal
+JETSON_B_PRIVATE_NAME=jetson-b.lab.internal
+JETSON_C_PRIVATE_NAME=jetson-c.lab.internal
+
+R900_PRIVATE_ALIAS=r900
+JETSON_A_PRIVATE_ALIAS=jetson-a
+JETSON_B_PRIVATE_ALIAS=jetson-b
+JETSON_C_PRIVATE_ALIAS=jetson-c
+
+PRIVATE_DNS_ZONE=lab.internal
+FRIENDLY_LAN_SUFFIX=.local
+
+# Use the private names for Headscale, recovery docs, and internal URLs.
+# Keep .local names only as a convenience layer while the room is being built.

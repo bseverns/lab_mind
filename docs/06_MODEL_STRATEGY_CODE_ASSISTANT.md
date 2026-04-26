@@ -123,6 +123,10 @@ See:
 Use:
 
 - `ops/lab/model-values.example`
+- `docs/CURRENT_STATE.md`
+- `docs/TESTED_VALUES.md`
+- `docs/KNOWN_GOOD_STATE.md`
+- `docs/EXPERIMENTAL_SURFACES.md`
 - `templates/MODEL_SHORTLIST.example.md`
 - `templates/MODEL_CANDIDATES.example.csv`
 - `templates/LOCAL_MODEL_STACK.example.yml`

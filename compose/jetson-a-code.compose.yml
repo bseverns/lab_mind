@@ -3,13 +3,13 @@
 #
 # Suggested command:
 #   docker compose -f compose/jetson-a-base.compose.yml -f compose/jetson-a-code.compose.yml up -d
+#
+# This backend is compose-private only. Open WebUI reaches it on the internal network.
 
 services:
   llamacpp:
-    image: ghcr.io/ggml-org/llama.cpp:server
+    image: ghcr.io/ggml-org/llama.cpp:server-cuda12-b8840
     restart: unless-stopped
-    ports:
-      - "8081:8080"
     environment:
       - LLAMA_ARG_MODEL=/models/code/EDIT_ME-code-model.gguf
       - LLAMA_ARG_CTX_SIZE=4096

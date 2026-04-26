@@ -16,6 +16,17 @@ markdown_extensions:
           format: !!python/name:pymdownx.superfences.fence_code_format
 nav:
   - Home: index.md
+  - State:
+      - Current State: CURRENT_STATE.md
+      - Tested Values: TESTED_VALUES.md
+      - Known Good State: KNOWN_GOOD_STATE.md
+      - Experimental Surfaces: EXPERIMENTAL_SURFACES.md
+      - Image Versions: IMAGE_VERSIONS.md
+      - Naming And DNS: NAMING_AND_DNS.md
+      - Private Backend Boundary: PRIVATE_BACKEND_BOUNDARY.md
+      - Healthcheck Matrix: HEALTHCHECK_MATRIX.md
+      - Ownership Map: OWNERSHIP_MAP.md
+      - Maintenance Cadence: MAINTENANCE_CADENCE.md
   - Orientation: 00_ORIENTATION.md
   - Network Reality: 01_NETWORK_REALITY.md
   - Node Roles: 02_NODE_ROLES_THREE_JETSONS.md
@@ -51,3 +62,6 @@ nav:
       - Model Choice Ladder: handoff/MODEL_CHOICE_LADDER.md
       - Blank Card Rebuild: handoff/BLANK_CARD_REBUILD.md
       - Printable Quickstart: handoff/PRINTABLE_QUICKSTART.md
+      - Dashboard Bookmarks: handoff/DASHBOARD_BOOKMARKS.html
+  - Board:
+      - Infrastructure Case: BOARD_CASE_FOR_INFRASTRUCTURE.md

@@ -19,8 +19,13 @@ On Jetson-A:
 hostname
 lsblk
 docker ps
-curl -fsS http://127.0.0.1:8081/api/tags || true
-curl -fsS http://127.0.0.1:8081/v1/models || true
+MODEL_SERVER_URL="${MODEL_SERVER_URL:-${OLLAMA_URL:-}}"
+if [ -n "$MODEL_SERVER_URL" ]; then
+  curl -fsS "$MODEL_SERVER_URL/api/tags" || true
+  curl -fsS "$MODEL_SERVER_URL/v1/models" || true
+else
+  echo "set MODEL_SERVER_URL to the private backend URL"
+fi
 ```
 
 On Jetson-B or Jetson-C:

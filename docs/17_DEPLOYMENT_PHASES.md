@@ -11,6 +11,10 @@ Before installing anything, fill:
 - `templates/HEADSCALE_VALUES.example`
 - `ops/lab/hostnames.example`
 - `ops/lab/service-urls.example`
+- `docs/CURRENT_STATE.md`
+- `docs/TESTED_VALUES.md`
+- `docs/KNOWN_GOOD_STATE.md`
+- `docs/EXPERIMENTAL_SURFACES.md`
 
 ## Phase 1: Bring up the server spine
 
@@ -31,6 +35,7 @@ Success:
 - the R900 can serve the internal operator map
 - the archive exists before the assistant is treated as precious
 - the room has a recovery spine
+- the board-facing case can explain the spine without jargon
 
 ## Phase 2: Keep Jetson-A as the assistant node
 

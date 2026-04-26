@@ -7,4 +7,4 @@
 services:
   openwebui:
     environment:
-      - OPENAI_API_BASE_URL=http://r900.local:8081/v1
+      - OPENAI_API_BASE_URL=http://r900.lab.internal:8081/v1

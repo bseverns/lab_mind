@@ -7,6 +7,8 @@ Use these files as starting points for local copies:
 - `hostnames.example`
 - `service-urls.example`
 - `headscale-values.example`
+- `private-names.example`
+- `image-values.example`
 - `machine-inventory.example.csv`
 - `digital-factory-workspace.example.md`
 - `model-values.example`

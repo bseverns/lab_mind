@@ -32,9 +32,9 @@ It is the place where a person should be able to open a browser and get help wit
 
 | Service | Expected path | Notes |
 |---|---|---|
-| Open WebUI | `http://jetson-a.local:3000` | assistant surface |
-| Model server | `http://jetson-a.local:8081` | local only |
-| Local docs/RAG | `http://jetson-a.local/docs` | browser-first retrieval |
+| Open WebUI | `http://jetson-a.lab.internal:3000` | assistant surface |
+| Model server | `http://jetson-a.lab.internal` | local only |
+| Local docs/RAG | `http://jetson-a.lab.internal/docs` | browser-first retrieval |
 | Private educator path | Headscale tailnet | not public |
 | CNCjs | `EDIT_ME` | only if physically appropriate |
 

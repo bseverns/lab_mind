@@ -1,12 +1,13 @@
 # Optional R900-backed code assistant backend.
 # Use this when you want a slower but larger code model on the server spine.
+# Keep this on the private network only.
 #
 # Suggested command:
 #   docker compose -f compose/r900-code.compose.yml up -d
 
 services:
   llamacpp:
-    image: ghcr.io/ggml-org/llama.cpp:server
+    image: ghcr.io/ggml-org/llama.cpp:server-b8840
     restart: unless-stopped
     ports:
       - "8081:8080"

@@ -8,6 +8,8 @@ These scripts are starter scaffolds. Read before running.
 - `build_wiki.sh`: builds the MkDocs wiki site into `site/`.
 - `make_static_dashboard.py`: updates a static dashboard JSON/HTML copy.
 - `check_digital_factory_placeholder.py`: placeholder for future Digital Factory API check.
+- `check_docs_integrity.sh`: verifies the required state and placeholder docs exist.
+- `check_image_pins.sh`: fails if compose files still use floating image tags.
 
 The wiki build helper expects `mkdocs` and the Material theme to be installed in the current environment.
 If they are missing, install them with `python3 -m pip install -r requirements-wiki.txt`.

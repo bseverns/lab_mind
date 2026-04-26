@@ -1,6 +1,6 @@
 services:
   cncjs:
-    image: cncjs/cncjs:latest
+    image: cncjs/cncjs:v1.11.0
     restart: unless-stopped
     ports:
       - "8000:8000"

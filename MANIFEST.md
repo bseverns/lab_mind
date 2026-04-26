@@ -5,6 +5,17 @@
 - `requirements-wiki.txt`
 - `.github/workflows/publish-wiki.yml`
 - `docs/index.md`
+- `docs/CURRENT_STATE.md`
+- `docs/TESTED_VALUES.md`
+- `docs/KNOWN_GOOD_STATE.md`
+- `docs/EXPERIMENTAL_SURFACES.md`
+- `docs/IMAGE_VERSIONS.md`
+- `docs/NAMING_AND_DNS.md`
+- `docs/PRIVATE_BACKEND_BOUNDARY.md`
+- `docs/HEALTHCHECK_MATRIX.md`
+- `docs/OWNERSHIP_MAP.md`
+- `docs/MAINTENANCE_CADENCE.md`
+- `docs/BOARD_CASE_FOR_INFRASTRUCTURE.md`
 - `docs/handoff/INTERN_ONE_PAGER.md`
 - `docs/handoff/OPERATOR_TOGGLE_CHECKLIST.md`
 - `docs/handoff/MODEL_SWITCH_CARD.md`
@@ -70,6 +81,8 @@
 - `ops/headscale/README.md`
 - `ops/lab/README.md`
 - `ops/lab/digital-factory-workspace.example.md`
+- `ops/lab/private-names.example`
+- `ops/lab/image-values.example`
 - `ops/lab/headscale-values.example`
 - `ops/lab/hostnames.example`
 - `ops/lab/machine-inventory.example.csv`
@@ -84,7 +97,9 @@
 - `scripts/build_wiki.sh`
 - `scripts/capture_known_good_state.sh`
 - `scripts/check_digital_factory_placeholder.py`
+- `scripts/check_docs_integrity.sh`
 - `scripts/check_ollama.sh`
+- `scripts/check_image_pins.sh`
 - `scripts/lab_status_check.sh`
 - `scripts/make_static_dashboard.py`
 - `systemd/known-good-snapshot.service`
@@ -94,6 +109,7 @@
 - `templates/CNC_INVENTORY.csv`
 - `templates/DIGITAL_FACTORY_CHECK.md`
 - `templates/DIGITAL_FACTORY_WORKSPACE.example.md`
+- `templates/BOARD_BUDGET_TIERS.example.md`
 - `templates/LOCAL_MODEL_STACK.example.yml`
 - `templates/HEADSCALE_VALUES.example`
 - `templates/INCIDENT_LOG.csv`

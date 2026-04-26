@@ -14,11 +14,11 @@ status = {
         "jetson-c": "unknown",
     },
     "links": {
-        "R900 cockpit": "http://r900.local",
-        "Open WebUI": "http://jetson-a.local:3000",
+        "R900 cockpit": "http://r900.lab.internal",
+        "Open WebUI": "http://jetson-a.lab.internal:3000",
         "Digital Factory": "https://digitalfactory.ultimaker.com/",
-        "Docs mirror": "http://r900.local/docs",
-        "Portainer": "https://r900.local:9443",
+        "Docs mirror": "http://r900.lab.internal/docs",
+        "Portainer": "https://r900.lab.internal:9443",
     },
 }
 status_path.write_text(json.dumps(status, indent=2) + "\n")

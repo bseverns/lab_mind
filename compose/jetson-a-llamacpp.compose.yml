@@ -5,13 +5,12 @@
 # - The 250 GB SSD can hold model files and cache.
 # - Pick one or two models that fit comfortably; do not try to mirror the cloud.
 # - Replace EDIT_ME values with tested paths and sizes.
+# - This backend is compose-private only. Open WebUI reaches it on the internal network.
 
 services:
   llamacpp:
-    image: ghcr.io/ggml-org/llama.cpp:server
+    image: ghcr.io/ggml-org/llama.cpp:server-cuda12-b8840
     restart: unless-stopped
-    ports:
-      - "8081:8080"
     environment:
       - LLAMA_ARG_MODEL=/models/EDIT_ME-model.gguf
       - LLAMA_ARG_CTX_SIZE=EDIT_ME
@@ -23,7 +22,7 @@ services:
       - /srv/labbrain/data/llamacpp:/root/.cache
 
   openwebui:
-    image: ghcr.io/open-webui/open-webui:main
+    image: ghcr.io/open-webui/open-webui:git-f2a360c-cuda
     restart: unless-stopped
     ports:
       - "3000:8080"
@@ -35,7 +34,7 @@ services:
       - /srv/labbrain/data/openwebui:/app/backend/data
 
   cockpit:
-    image: caddy:2
+    image: caddy:2.11.2-alpine
     restart: unless-stopped
     ports:
       - "80:80"

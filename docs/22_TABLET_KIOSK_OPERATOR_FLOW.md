@@ -21,13 +21,13 @@ The tablet should not require the operator to remember hostnames.
 Start page:
 
 ```text
-http://r900.local
+http://r900.lab.internal
 ```
 
 Assistant page:
 
 ```text
-http://jetson-a.local:3000
+http://jetson-a.lab.internal:3000
 ```
 
 ## Printed fallback

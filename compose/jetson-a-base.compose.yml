@@ -9,7 +9,7 @@
 
 services:
   openwebui:
-    image: ghcr.io/open-webui/open-webui:main
+    image: ghcr.io/open-webui/open-webui:git-f2a360c-cuda
     restart: unless-stopped
     ports:
       - "3000:8080"
@@ -21,7 +21,7 @@ services:
       - /srv/labbrain/data/openwebui:/app/backend/data
 
   cockpit:
-    image: caddy:2
+    image: caddy:2.11.2-alpine
     restart: unless-stopped
     ports:
       - "80:80"

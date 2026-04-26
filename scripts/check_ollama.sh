@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-URL="${MODEL_SERVER_URL:-${OLLAMA_URL:-http://127.0.0.1:8081}}"
+URL="${MODEL_SERVER_URL:-${OLLAMA_URL:-}}"
+
+if [[ -z "$URL" ]]; then
+  echo "MODEL_SERVER_URL or OLLAMA_URL must point at a private backend URL"
+  exit 1
+fi
 
 probe() {
   local path="$1"

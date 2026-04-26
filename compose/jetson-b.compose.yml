@@ -3,7 +3,7 @@
 
 services:
   status-page:
-    image: caddy:2
+    image: caddy:2.11.2-alpine
     restart: unless-stopped
     ports:
       - "8080:80"

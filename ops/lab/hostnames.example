@@ -1,24 +1,24 @@
 # Hostnames and roles
 
 R900_HOSTNAME=r900
-R900_FQDN=EDIT_ME
+R900_FQDN=r900.lab.internal
 R900_ROLE=infrastructure_spine
 
 JETSON_A_HOSTNAME=jetson-a
-JETSON_A_FQDN=EDIT_ME
+JETSON_A_FQDN=jetson-a.lab.internal
 JETSON_A_ROLE=live_assistant_node
 
 JETSON_B_HOSTNAME=jetson-b
-JETSON_B_FQDN=EDIT_ME
+JETSON_B_FQDN=jetson-b.lab.internal
 JETSON_B_ROLE=edge_support_node
 
 JETSON_C_HOSTNAME=jetson-c
-JETSON_C_FQDN=EDIT_ME
+JETSON_C_FQDN=jetson-c.lab.internal
 JETSON_C_ROLE=edge_support_node
 
 PI_DEFAULT_PREFIX=pi
 PI_EDGE_ROLE=disposable_edge_appliance
 
-SWITCH_HOSTNAME=EDIT_ME
+SWITCH_HOSTNAME=switch.lab.internal
 HEADSCALE_NODE_GROUP=private-control-plane
 DIGITAL_FACTORY_ALIAS=printer-cloud
