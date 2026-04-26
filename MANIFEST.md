@@ -2,10 +2,16 @@
 
 - `CHANGELOG.md`
 - `README.md`
-- `index.md`
 - `requirements-wiki.txt`
 - `.github/workflows/publish-wiki.yml`
 - `docs/index.md`
+- `docs/handoff/INTERN_ONE_PAGER.md`
+- `docs/handoff/OPERATOR_TOGGLE_CHECKLIST.md`
+- `docs/handoff/MODEL_SWITCH_CARD.md`
+- `docs/handoff/MODEL_CHOICE_LADDER.md`
+- `docs/handoff/PRINTABLE_QUICKSTART.md`
+- `docs/handoff/BLANK_CARD_REBUILD.md`
+- `docs/handoff/DASHBOARD_BOOKMARKS.html`
 - `SOURCE_NOTES.md`
 - `checklists/CLASS_SHUTDOWN.md`
 - `checklists/CLASS_STARTUP.md`

@@ -11,15 +11,15 @@ It is written so an intern can start with almost no context and still find the n
 
 ## Fast path for new interns
 
-- [`docs/00_ORIENTATION.md`](00_ORIENTATION.md)
-- [`docs/01_NETWORK_REALITY.md`](01_NETWORK_REALITY.md)
-- [`docs/07_SERVICE_PLACEMENT_MATRIX.md`](07_SERVICE_PLACEMENT_MATRIX.md)
-- [`docs/17_DEPLOYMENT_PHASES.md`](17_DEPLOYMENT_PHASES.md)
-- [`docs/18_OPERATIONS_RUNBOOK.md`](18_OPERATIONS_RUNBOOK.md)
-- [`handoff/INTERN_ONE_PAGER.md`](../handoff/INTERN_ONE_PAGER.md)
-- [`handoff/OPERATOR_TOGGLE_CHECKLIST.md`](../handoff/OPERATOR_TOGGLE_CHECKLIST.md)
-- [`handoff/MODEL_SWITCH_CARD.md`](../handoff/MODEL_SWITCH_CARD.md)
-- [`handoff/MODEL_CHOICE_LADDER.md`](../handoff/MODEL_CHOICE_LADDER.md)
+- [`00_ORIENTATION.md`](00_ORIENTATION.md)
+- [`01_NETWORK_REALITY.md`](01_NETWORK_REALITY.md)
+- [`07_SERVICE_PLACEMENT_MATRIX.md`](07_SERVICE_PLACEMENT_MATRIX.md)
+- [`17_DEPLOYMENT_PHASES.md`](17_DEPLOYMENT_PHASES.md)
+- [`18_OPERATIONS_RUNBOOK.md`](18_OPERATIONS_RUNBOOK.md)
+- [`INTERN_ONE_PAGER.md`](handoff/INTERN_ONE_PAGER.md)
+- [`OPERATOR_TOGGLE_CHECKLIST.md`](handoff/OPERATOR_TOGGLE_CHECKLIST.md)
+- [`MODEL_SWITCH_CARD.md`](handoff/MODEL_SWITCH_CARD.md)
+- [`MODEL_CHOICE_LADDER.md`](handoff/MODEL_CHOICE_LADDER.md)
 
 ## What this wiki is for
 

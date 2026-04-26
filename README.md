@@ -26,7 +26,7 @@ Design constraints:
 
 Start with:
 
-1. [`index.md`](index.md)
+1. [`docs/index.md`](docs/index.md)
 2. [`docs/00_ORIENTATION.md`](docs/00_ORIENTATION.md)
 3. [`docs/01_NETWORK_REALITY.md`](docs/01_NETWORK_REALITY.md)
 4. [`docs/07_SERVICE_PLACEMENT_MATRIX.md`](docs/07_SERVICE_PLACEMENT_MATRIX.md)
@@ -34,10 +34,10 @@ Start with:
 6. [`docs/06_MODEL_STRATEGY_CODE_ASSISTANT.md`](docs/06_MODEL_STRATEGY_CODE_ASSISTANT.md)
 7. [`docs/25_JETSON_A_MODEL_BUILD_PIECES.md`](docs/25_JETSON_A_MODEL_BUILD_PIECES.md)
 8. [`docs/27_COOPERATIVE_CODE_MODE.md`](docs/27_COOPERATIVE_CODE_MODE.md)
-9. [`handoff/INTERN_ONE_PAGER.md`](handoff/INTERN_ONE_PAGER.md)
-10. [`handoff/OPERATOR_TOGGLE_CHECKLIST.md`](handoff/OPERATOR_TOGGLE_CHECKLIST.md)
-11. [`handoff/MODEL_SWITCH_CARD.md`](handoff/MODEL_SWITCH_CARD.md)
-12. [`handoff/MODEL_CHOICE_LADDER.md`](handoff/MODEL_CHOICE_LADDER.md)
+9. [`handoff/INTERN_ONE_PAGER.md`](docs/handoff/INTERN_ONE_PAGER.md)
+10. [`handoff/OPERATOR_TOGGLE_CHECKLIST.md`](docs/handoff/OPERATOR_TOGGLE_CHECKLIST.md)
+11. [`handoff/MODEL_SWITCH_CARD.md`](docs/handoff/MODEL_SWITCH_CARD.md)
+12. [`handoff/MODEL_CHOICE_LADDER.md`](docs/handoff/MODEL_CHOICE_LADDER.md)
 
 ## Where The Editable Placeholders Live
 
