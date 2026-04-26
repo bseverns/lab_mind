@@ -26,7 +26,7 @@ Design constraints:
 
 Start with:
 
-1. [`docs/index.md`](docs/index.md)
+1. [`index.md`](index.md)
 2. [`docs/00_ORIENTATION.md`](docs/00_ORIENTATION.md)
 3. [`docs/01_NETWORK_REALITY.md`](docs/01_NETWORK_REALITY.md)
 4. [`docs/07_SERVICE_PLACEMENT_MATRIX.md`](docs/07_SERVICE_PLACEMENT_MATRIX.md)

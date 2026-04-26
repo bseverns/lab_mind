@@ -2,6 +2,7 @@
 
 - `CHANGELOG.md`
 - `README.md`
+- `index.md`
 - `requirements-wiki.txt`
 - `.github/workflows/publish-wiki.yml`
 - `docs/index.md`
