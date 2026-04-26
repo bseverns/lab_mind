@@ -65,6 +65,17 @@ python3 -m pip install -r requirements-wiki.txt
 
 Use `mkdocs serve` if you want a live preview while editing.
 
+## Publish The Wiki
+
+The wiki is set up to publish from GitHub Actions on pushes to `main`.
+
+Before the first publish, set the repository Pages source to GitHub Actions in GitHub settings.
+Then push to `main` and let the workflow build and deploy the site.
+
+The workflow lives at:
+
+- [`.github/workflows/publish-wiki.yml`](.github/workflows/publish-wiki.yml)
+
 ## Rule Of Thumb
 
 The R900 stores and restores the room. Jetson-A talks to people. The Nanos and Pis do edge work. Nothing should depend on magic that cannot be rebuilt from the docs.

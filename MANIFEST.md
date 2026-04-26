@@ -3,6 +3,7 @@
 - `CHANGELOG.md`
 - `README.md`
 - `requirements-wiki.txt`
+- `.github/workflows/publish-wiki.yml`
 - `docs/index.md`
 - `SOURCE_NOTES.md`
 - `checklists/CLASS_SHUTDOWN.md`

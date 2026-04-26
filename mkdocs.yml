@@ -2,6 +2,17 @@ site_name: Lab Mind
 site_description: Recoverable lab topology and operations docs
 theme:
   name: material
+markdown_extensions:
+  - admonition
+  - attr_list
+  - footnotes
+  - md_in_html
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
 nav:
   - Home: index.md
   - Orientation: docs/00_ORIENTATION.md

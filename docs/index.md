@@ -27,6 +27,19 @@ It is written so an intern can start with almost no context and still find the n
 - keeping recovery boring
 - making it possible to rebuild from text
 - reducing hand-holding for interns and visiting operators
+- rendering diagrams with Mermaid code fences when a page needs a topology sketch
+
+## Diagram note
+
+When you write a diagram, use a fenced block like this:
+
+```mermaid
+flowchart LR
+  A[Jetson-A] --> R900[Dell PowerEdge R900]
+  A --> B[Jetson-B]
+```
+
+The wiki should render that as a diagram instead of showing the raw markup.
 
 ## What to do first if something is broken
 
